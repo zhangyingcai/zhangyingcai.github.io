@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Markdown的基本使用]]></title>
+    <url>%2F2018%2F11%2F29%2Fmarkdown%2F</url>
+    <content type="text"><![CDATA[记录markdown的使用方法 标题在想要设置为标题的文字前面加#来表示一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。 注：标准语法一般在#后跟个空格再写文字。 示例:123456# 这是一级标题## 这是二级标题### 这是三级标题#### 这是四级标题##### 这是五级标题###### 这是六级标题 效果如下： 这是一级标题这是二级标题这是三级标题这是四级标题这是五级标题这是六级标题字体* 加粗**[要加粗的文字]**用两个*号包起来 斜体*[要斜体的文字]*用一个*号包起来 斜体加粗***[要斜体加粗的文字]***用三个*号包起来 删除线~~[要删除线的文字]~~用两个~号包起来 示例：1234**这是加粗的文字***这是倾斜的文字****这是斜体加粗的文字***~~这是加删除线的文字~~ 效果如下：这是加粗的文字这是倾斜的文字这是斜体加粗的文字这是加删除线的文字 注:hexo不能用 捂脸 引用在引用的文字前加&gt;即可。引用也可以嵌套，如加两个&gt;&gt;三个&gt;&gt;&gt;n个…貌似可以一直加下去，但没神马卵用 示例：123&gt;这是引用的内容&gt;&gt;这是引用的内容&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容 效果如下: 这是引用的内容 这是引用的内容 这是引用的内容 分割线三个或者三个以上的 - 或者 * 都可以。 示例:1234-------******** 效果如下： 注：效果一样 o(￣︶￣)o，hexo 三个-没用 ￣□￣｜｜ 图片语法：1234![图片alt](图片地址 &apos;&apos;图片title&apos;&apos;)图片alt就是显示在图片下面的文字，相当于对图片内容的解释。图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加 示例：1![小猪佩奇](https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1543491437191&amp;di=d1111fbe37d3bd83c8121132d6117c4f&amp;imgtype=0&amp;src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180802%2F01%2F1533145434-yGPirmnoVd.jpg &apos;&apos;小猪&apos;&apos;) 效果如下： 超链接语法：12[超链接名](超链接地址 &quot;超链接title&quot;)title可加可不加 示例：1[百度](https://baidu.com &quot;@百度&quot;) 百度 注：Markdown本身语法不支持链接在新页面中打开,如果想要在新页面中打开的话可以用html语言的a标签代替。1&lt;a href=&quot;超链接地址&quot; target=&quot;_blank&quot;&gt;超链接名&lt;/a&gt; 列表]]></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F11%2F28%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
