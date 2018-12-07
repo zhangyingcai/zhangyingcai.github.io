@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[webapp登录注册时的密码处理思考]]></title>
+    <url>%2F2018%2F12%2F07%2Fwebsign%2F</url>
+    <content type="text"><![CDATA[webapp在登录的时候怎么控制登录的安全性？ 目前通过https都可以解决这个问题。使用https自动加密传输的数据，从而解决传输密码明文的问题。然后在存储到数据库前通过md5或者其他加密算法进行加密。 #加盐 不建议只对密码单纯通过加密算法加密，因为存在彩虹表的关系。通常需要对密码加盐，然后进行几次不同加密算法的加密。12// 加盐也就是给原密码添加字符串，增加原密码长度sha256(sha1(md5(salt + password + salt))) 但是加盐并不能阻止别人盗取账号，只能确保即使数据库泄露，也不会暴露用户的真实密码。一旦攻击者得到了用户的账号，可以通过暴力破解的方式破解密码。对于这种情况，通常使用验证码增加延时或者限制尝试次数的方式。并且一旦用户输入了错误的密码，也不能直接提示用户输错密码，而应该提示账号或密码错误。 摘自：interviewmap 不采用http的才使用前端加密后端解密的方式。 题外话：不加https的网站我不用，没有安全锁标志的不用!!! ╭(╯^╰)╮]]></content>
+      <tags>
+        <tag>加密</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[virtualbox-centos7.5-wdcp]]></title>
     <url>%2F2018%2F12%2F04%2Fvirtual-cenos7-5%2F</url>
     <content type="text"><![CDATA[用于记录一次成功使用virtualbox虚拟机安装centos7.5成功联网并安装上wdcp 虚拟机软件当然选免费的了，而且发现好多VMware Workstation的软件链接提示有病毒，qnmlgb老子不用。 centos下载centos7.5-dvd版 要点要点1:虚拟机网卡设置要点2:虚拟机打开网络注：centos默认不启动网卡，需要手动启动路径：123cd /etc/sysconfig/network-scripts/vi ifcfg-xx 找到开头为ifcfg-的，默认是en0输入i进入编辑模式编辑该文件设置ONBOOT=yes:wq 保存退出重启网络1service network restart 有时候要重启虚拟机才能生效。]]></content>
