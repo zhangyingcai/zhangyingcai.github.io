@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[jquery中$的实现方式]]></title>
+    <url>%2F2018%2F12%2F10%2Fjquery%2F</url>
+    <content type="text"><![CDATA[实现方式(网上找的)123456789101112131415161718192021&lt;script&gt; (function(w)&#123; //工厂 function jQuery(selector, context)&#123; return new jQuery.fn.init(selector, context); &#125; //给原型提供一个简写方式 jQuery.fn = jQuery.prototype = &#123; &#125;; //init才是jQuery中真正的构造函数 var init = jQuery.fn.init = function(selector, context)&#123; // 构造函数 &#125;; //把构造函数的原型，替换为jQuery工厂的原型 //这么做的目的是为了实现jQuery的插件机制，让外界可以通过jQuery方便的进行扩展 init.prototype = jQuery.fn; w.jQuery = w.$ = jQuery; &#125;(window));&lt;/script&gt; 1234(function(w)&#123; // dosomthing w.jQuery = w.$ = jQuery; &#125;)(window) 目的：通过全局对象window可以调用对象jQuery或者$ 然后我们声明一个对象jQuery1234(function(w)&#123; function jQuery(selector, context)&#123;&#125; w.jQuery = w.$ = jQuery;&#125;)(window) 效果: 大功告成！但是jQuery显然是更深一层次的做法。示例方式是将原型转换为简化方法fn。然后在jQuery原型上添加一个init方法。 工厂模式什么是工厂模式？怎么在javascript使用？ 工厂模式是用来创建对象的一种最常见的设计模式。我们不暴露创建对象的具体逻辑，而是将逻辑封装到一个函数中，如示例中的jQuery函数，那么这个函数就可以被视为一个工厂。 工厂模式根据抽象程度的不同可以分为：简单工厂，工厂方法和抽象工厂。]]></content>
+      <tags>
+        <tag>jQuery</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[webapp登录注册时的密码处理思考]]></title>
     <url>%2F2018%2F12%2F07%2Fwebsign%2F</url>
     <content type="text"><![CDATA[webapp在登录的时候怎么控制登录的安全性？ 目前通过https都可以解决这个问题。使用https自动加密传输的数据，从而解决传输密码明文的问题。然后在存储到数据库前通过md5或者其他加密算法进行加密。 #加盐 不建议只对密码单纯通过加密算法加密，因为存在彩虹表的关系。通常需要对密码加盐，然后进行几次不同加密算法的加密。12// 加盐也就是给原密码添加字符串，增加原密码长度sha256(sha1(md5(salt + password + salt))) 但是加盐并不能阻止别人盗取账号，只能确保即使数据库泄露，也不会暴露用户的真实密码。一旦攻击者得到了用户的账号，可以通过暴力破解的方式破解密码。对于这种情况，通常使用验证码增加延时或者限制尝试次数的方式。并且一旦用户输入了错误的密码，也不能直接提示用户输错密码，而应该提示账号或密码错误。 摘自：interviewmap 不采用http的才使用前端加密后端解密的方式。 题外话：不加https的网站我不用，没有安全锁标志的不用!!! ╭(╯^╰)╮]]></content>
