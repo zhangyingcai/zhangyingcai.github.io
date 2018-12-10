@@ -121,7 +121,7 @@
 <meta property="og:description" content="实现方式(网上找的)123456789101112131415161718192021&amp;lt;script&amp;gt;　　(function(w)&amp;#123;        //工厂        function jQuery(selector, context)&amp;#123;            return new jQuery.fn.init(selector, context);">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://zhangyingcai.github.io/images/微信截图_20181210172609.png">
-<meta property="og:updated_time" content="2018-12-10T10:59:23.800Z">
+<meta property="og:updated_time" content="2018-12-10T11:03:44.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jquery中$的实现方式">
 <meta name="twitter:description" content="实现方式(网上找的)123456789101112131415161718192021&amp;lt;script&amp;gt;　　(function(w)&amp;#123;        //工厂        function jQuery(selector, context)&amp;#123;            return new jQuery.fn.init(selector, context);">
@@ -452,7 +452,7 @@
                 
               
 
-              <time title="创建时间：2018-12-10 17:12:08 / 修改时间：18:59:23" itemprop="dateCreated datePublished" datetime="2018-12-10T17:12:08+08:00">2018-12-10</time>
+              <time title="创建时间：2018-12-10 17:12:08 / 修改时间：19:03:44" itemprop="dateCreated datePublished" datetime="2018-12-10T17:12:08+08:00">2018-12-10</time>
             
 
             
@@ -502,6 +502,7 @@
       
         <h1 id="实现方式-网上找的"><a href="#实现方式-网上找的" class="headerlink" title="实现方式(网上找的)"></a>实现方式(网上找的)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">　　(function(w)&#123;</span><br><span class="line">        //工厂</span><br><span class="line">        function jQuery(selector, context)&#123;</span><br><span class="line">            return new jQuery.fn.init(selector, context);</span><br><span class="line">        &#125;</span><br><span class="line">        //给原型提供一个简写方式</span><br><span class="line">        jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line">        //init才是jQuery中真正的构造函数</span><br><span class="line">        var init = jQuery.fn.init = function(selector, context)&#123;</span><br><span class="line">            // 构造函数</span><br><span class="line">        &#125;;</span><br><span class="line">        //把构造函数的原型，替换为jQuery工厂的原型</span><br><span class="line">        //这么做的目的是为了实现jQuery的插件机制，让外界可以通过jQuery方便的进行扩展</span><br><span class="line">        init.prototype = jQuery.fn;</span><br><span class="line">        w.jQuery = w.$ = jQuery;</span><br><span class="line">    &#125;(window));</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<p><a href="http://www.cnblogs.com/ldq678/p/9666914.html" target="_blank" rel="noopener">原链接</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(function(w)&#123;</span><br><span class="line">    // dosomthing</span><br><span class="line">    w.jQuery = w.$ = jQuery;</span><br><span class="line">  &#125;)(window)</span><br></pre></td></tr></table></figure>
 <p>目的：通过全局对象window可以调用对象jQuery或者$</p>
 <p>然后我们声明一个对象jQuery<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(function(w)&#123;</span><br><span class="line">  function jQuery(selector, context)&#123;&#125;</span><br><span class="line">  w.jQuery = w.$ = jQuery;</span><br><span class="line">&#125;)(window)</span><br></pre></td></tr></table></figure></p>
