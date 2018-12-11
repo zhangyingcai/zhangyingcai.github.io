@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2018%2F12%2F11%2Ftest%2F</url>
+    <content type="text"><![CDATA[Document .triangle{ height:0; width:0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 100px solid red; }]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[用css画三角形]]></title>
+    <url>%2F2018%2F12%2F11%2Fcss-triangle%2F</url>
+    <content type="text"><![CDATA[1234567.triangle&#123; height:0; width:0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 100px solid red;&#125; 画出的是一个倒立的三角形, 改为border-bottom就是一个正立的三角形]]></content>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[js中一般怎么实现继承]]></title>
     <url>%2F2018%2F12%2F10%2Fjs-super%2F</url>
-    <content type="text"><![CDATA[123456789101112131415161718192021222324function Animal(name)&#123; // 属性 this.name = name || &apos;Animal&apos;; // 实例方法 this.sleep = function()&#123; console.log(this.name + &quot; 正在睡觉。&quot;); &#125;&#125; // 原型方法 Animal.prototype.eat = function(food)&#123; console.log(this.name + &quot; 正在吃 &quot;+food);&#125;// 子类function Tiger()&#123;&#125;Tiger.prototype = new Animal();Tiger.prototype.name = &quot;Tiger&quot;;var tiger = new Tiger();console.log(tiger.name);console.log(tiger.eat(&apos;sleep&apos;));console.log(tiger.sleep());console.log(tiger instanceof Animal); //true console.log(tiger instanceof Tiger); //true 效果 ##特点 非常纯粹的继承关系，实例是子类的实例，也是父类的实例 父类新增原型方法/原型属性，子类都能访问到 简单，易于实现 ##缺点： 可以在子类构造函数中，为子类实例增加实例属性。如果要新增原型属性和方法，则必须放在new Animal()这样的语句之后执行 无法实现多继承 来自原型对象的引用属性是所有实例共享的 创建子类实例时，无法向父类构造函数传参 TODO：写这个的时候还是有点蒙。]]></content>
+    <content type="text"><![CDATA[学习一下js的继承实现。 123456789101112131415161718192021222324function Animal(name)&#123; // 属性 this.name = name || &apos;Animal&apos;; // 实例方法 this.sleep = function()&#123; console.log(this.name + &quot; 正在睡觉。&quot;); &#125;&#125; // 原型方法 Animal.prototype.eat = function(food)&#123; console.log(this.name + &quot; 正在吃 &quot;+food);&#125;// 子类function Tiger()&#123;&#125;Tiger.prototype = new Animal();Tiger.prototype.name = &quot;Tiger&quot;;var tiger = new Tiger();console.log(tiger.name);console.log(tiger.eat(&apos;sleep&apos;));console.log(tiger.sleep());console.log(tiger instanceof Animal); //true console.log(tiger instanceof Tiger); //true 效果 ##特点 非常纯粹的继承关系，实例是子类的实例，也是父类的实例 父类新增原型方法/原型属性，子类都能访问到 简单，易于实现 ##缺点： 可以在子类构造函数中，为子类实例增加实例属性。如果要新增原型属性和方法，则必须放在new Animal()这样的语句之后执行 无法实现多继承 来自原型对象的引用属性是所有实例共享的 创建子类实例时，无法向父类构造函数传参 TODO：写这个的时候还是有点蒙。]]></content>
       <tags>
         <tag>js</tag>
       </tags>
