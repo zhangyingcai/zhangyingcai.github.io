@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用js实现单例模式]]></title>
+    <url>%2F2018%2F12%2F14%2Fjs-single%2F</url>
+    <content type="text"><![CDATA[先上代码：惰性单例的精髓！！！ 1234567//单例模式抽象，分离创建对象的函数和判断对象是否已经创建var getSingle = function(fn)&#123; var result; return function()&#123; result result || ( result = fn.apply(this, arguments)); &#125;&#125;]]></content>
+      <tags>
+        <tag>单例</tag>
+      </tags>
+  </entry>
+  <entry>
     <title></title>
     <url>%2F2018%2F12%2F11%2Ftest%2F</url>
     <content type="text"><![CDATA[Document .triangle{ height:0; width:0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 100px solid red; } .box{ width: 0px; height: 0px; margin:10px; border-left:100px solid red; border-right:100px solid blue; border-top:100px solid yellow; border-bottom:100px solid green; }]]></content>
