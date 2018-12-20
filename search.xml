@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[前端工程师必须懂得概念（一）]]></title>
+    <url>%2F2018%2F12%2F20%2Fjs-call-stack%2F</url>
+    <content type="text"><![CDATA[调用堆栈 调用栈是解析器的一种机制，可以在脚本调用多个函数时，跟踪每个函数在完成执行时应该返回控制的点。（如什么函数在执行，什么函数被这个函数调用，下一个调用的函数是谁。） 当脚本要执行一个函数时，解析器把该函数添加到栈中并执行 任何被这个函数调用的函数会进一步添加到调用栈中，并且会运行到他们被上个程序调用的位置 当函数运行结束后，解释器将他从调用栈中取出，并在主代码列表中继续执行代码 如果栈调用的空间比分配给它的内存空间大，则会导致”栈溢出”]]></content>
+      <tags>
+        <tag>call stack</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[浏览器的事件注册机制]]></title>
     <url>%2F2018%2F12%2F20%2Fbrowser-event%2F</url>
-    <content type="text"><![CDATA[记录学习 事件触发的三个阶段 window向事件触发处传播，遇到注册的捕获事件会触发 传播到事件触发处触发注册的事件 从事件触发处向window传播，遇到注册的冒泡事件会触发 事件触发一般来说会按照上面的顺序进行，但是也有特例，如果给一个目标节点同时注册冒泡和捕获事件，事件触发会按照注册的顺序执行。 1234567// 以下会先打印冒泡然后是捕获node.addEventListener(&apos;click&apos;,(event) =&gt;&#123; console.log(&apos;冒泡&apos;)&#125;,false);node.addEventListener(&apos;click&apos;,(event) =&gt;&#123; console.log(&apos;捕获 &apos;)&#125;,true) 那么我们怎么区分注册的事件是冒泡事件还是捕获事件？ 我们通常使用addEventListener注册事件，该函数的第三个参数可以是布尔值，也可以是对象。对于布尔值 useCapture 参数来说，该参数默认值为 false 。useCapture 决定了注册的事件是捕获事件还是冒泡事件。对于对象参数来说，可以使用以下几个属性 capture，布尔值，和 useCapture 作用一样 once，布尔值，值为 true 表示该回调只会调用一次，调用后会移除监听 passive，布尔值，表示永远不会调用 preventDefault 一般来说，我们只希望事件只触发在目标上，这时候可以使用 stopPropagation 来阻止事件的进一步传播。通常我们认为 stopPropagation 是用来阻止事件冒泡的，其实该函数也可以阻止捕获事件。stopImmediatePropagation 同样也能实现阻止事件，但是还能阻止该事件目标执行别的注册事件。 12345678node.addEventListener(&apos;click&apos;,(event) =&gt;&#123; event.stopImmediatePropagation() console.log(&apos;冒泡&apos;)&#125;,false);// 点击 node 只会执行上面的函数，该函数不会执行node.addEventListener(&apos;click&apos;,(event) =&gt; &#123; console.log(&apos;捕获 &apos;)&#125;,true) stopPropagation只能阻止事件的进一步传播，默认注册的事件还是会执行。和他相反的是preventDefault方法，用于阻止默认事件的执行，但是会发送事件的进一步传播，通常是对注册事件重新定义时使用。return false;就等于同时调用了event.stopPropagation()和event.preventDefault()，即会阻止事件冒泡也会阻止默认事件。]]></content>
+    <content type="text"><![CDATA[记录学习浏览器的事件注册机制 事件触发的三个阶段 window向事件触发处传播，遇到注册的捕获事件会触发 传播到事件触发处触发注册的事件 从事件触发处向window传播，遇到注册的冒泡事件会触发 事件触发一般来说会按照上面的顺序进行，但是也有特例，如果给一个目标节点同时注册冒泡和捕获事件，事件触发会按照注册的顺序执行。 1234567// 以下会先打印冒泡然后是捕获node.addEventListener(&apos;click&apos;,(event) =&gt;&#123; console.log(&apos;冒泡&apos;)&#125;,false);node.addEventListener(&apos;click&apos;,(event) =&gt;&#123; console.log(&apos;捕获 &apos;)&#125;,true) 那么我们怎么区分注册的事件是冒泡事件还是捕获事件？ 我们通常使用addEventListener注册事件，该函数的第三个参数可以是布尔值，也可以是对象。对于布尔值 useCapture 参数来说，该参数默认值为 false 。useCapture 决定了注册的事件是捕获事件还是冒泡事件。对于对象参数来说，可以使用以下几个属性 capture，布尔值，和 useCapture 作用一样 once，布尔值，值为 true 表示该回调只会调用一次，调用后会移除监听 passive，布尔值，表示永远不会调用 preventDefault 一般来说，我们只希望事件只触发在目标上，这时候可以使用 stopPropagation 来阻止事件的进一步传播。通常我们认为 stopPropagation 是用来阻止事件冒泡的，其实该函数也可以阻止捕获事件。stopImmediatePropagation 同样也能实现阻止事件，但是还能阻止该事件目标执行别的注册事件。 12345678node.addEventListener(&apos;click&apos;,(event) =&gt;&#123; event.stopImmediatePropagation() console.log(&apos;冒泡&apos;)&#125;,false);// 点击 node 只会执行上面的函数，该函数不会执行node.addEventListener(&apos;click&apos;,(event) =&gt; &#123; console.log(&apos;捕获 &apos;)&#125;,true) stopPropagation只能阻止事件的进一步传播，默认注册的事件还是会执行。和他相反的是preventDefault方法，用于阻止默认事件的执行，但是会发送事件的进一步传播，通常是对注册事件重新定义时使用。return false;就等于同时调用了event.stopPropagation()和event.preventDefault()，即会阻止事件冒泡也会阻止默认事件。]]></content>
       <tags>
         <tag>browser event</tag>
       </tags>
