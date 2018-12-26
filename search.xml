@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[javascript 基础]]></title>
+    <url>%2F2018%2F12%2F26%2Fjs-base%2F</url>
+    <content type="text"><![CDATA[基础 原始类型原始类型是那几种？null是对象吗？ 6种 number string boolean null undefined symbol 我的理解： number 9527 string ‘9527’,”9527” boolean true,false Null null undefined symbol （ECMAScript 6新定义） 首先，原始类型存储的都是值，是没有函数可以调用的。 12undefined.toString()null.toString() 会报Cannot read property &#39;toString&#39; of null这个错误。此时你肯定会有意外，比如下面这种情况为什么这时候的&#39;1&#39;是可以调用这么多函数的？其实在这种情况下，&#39;1&#39;已经不是原始类型了，而是被强制转换成了String类型，也就是对象类型，所以可以调用toString函数。 除了会在必要的情况下强制转换类型以外，原始类型还有一些坑。 number类型是浮点类型的，在使用的过程中会遇到某些bug，比如0.1+0.2!=0.3。string类型是不可变的，无论你在string类型上调用任何方法，都不会对值有改变。除 Object 以外的所有类型都是不可变的，这里是值本身无法被改变。JavaScript 中对字符串的操作一定返回了一个新字符串，原始字符串并没有被改变，然后这些类型的值被称为”原始值”。null有的人会认为他是object,其实这是历史遗留问题。虽然typeof null会输出object。在 JS 的最初版本中使用的是 32 位系统，为了性能考虑使用低位存储变量的类型信息，000 开头代表是对象，然而 null 表示为全零，所以将它错误的判断为 object 。虽然现在的内部类型判断代码已经改变了，但是对于这个 Bug 却是一直流传下来。 拓展： 最新的 ECMAScript 标准定义了 7 种数据类型:包括以上6种类型和object。 对象类型对象类型和原始类型的不同之处？函数参数是对象会发生什么问题？ js中除了原始类型之外的其他的都是原始类型。不同：原始类型存储的是值，对象类型存储的是地址。函数参数是对象会发生，函数中修改了参数值，对象的值也跟着改变。 小题：12345678910111213141516function test(person) &#123; person.age = 26 person = &#123; name: &apos;yyy&apos;, age: 30 &#125; return person&#125;const p1 = &#123; name: &apos;yck&apos;, age: 25&#125;const p2 = test(p1)console.log(p1) // -&gt; ?console.log(p2) // -&gt; ? 通过字面量创建的是一个新对象。 在 Javascript 里，对象可以被看作是一组属性的集合。用对象字面量语法来定义一个对象时，会自动初始化一组属性。 typeof vs instanceof语法：1234567typeof operandoperand:对象或者原始值instanceof运算符用于测试构造函数的prototype属性是否出现在对象的原型链中的任何位置object instanceof constructorobject: 要检测的对象constructor: 某个构造函数 instanceof 典型的用法是判断是否继承关系，用于测试对象是不是特定构造函数的实例。 类型转换来自：掘金-前端面试之道]]></content>
+      <tags>
+        <tag>原始类型</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[前端工程师必须懂得概念（一）]]></title>
     <url>%2F2018%2F12%2F20%2Fjs-call-stack%2F</url>
     <content type="text"><![CDATA[调用堆栈 调用栈是解析器的一种机制，可以在脚本调用多个函数时，跟踪每个函数在完成执行时应该返回控制的点。（如什么函数在执行，什么函数被这个函数调用，下一个调用的函数是谁。） 当脚本要执行一个函数时，解析器把该函数添加到栈中并执行 任何被这个函数调用的函数会进一步添加到调用栈中，并且会运行到他们被上个程序调用的位置 当函数运行结束后，解释器将他从调用栈中取出，并在主代码列表中继续执行代码 如果栈调用的空间比分配给它的内存空间大，则会导致”栈溢出”]]></content>
