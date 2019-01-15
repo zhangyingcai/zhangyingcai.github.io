@@ -112,25 +112,24 @@
 
 
 
-  <meta name="description" content="webapp在登录的时候怎么控制登录的安全性？ 目前通过https都可以解决这个问题。使用https自动加密传输的数据，从而解决传输密码明文的问题。然后在存储到数据库前通过md5或者其他加密算法进行加密。">
-<meta name="keywords" content="加密">
+  <meta name="description" content="银河系首席踩坑官@ 每天进步一点点1.01^365">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webapp登录注册时的密码处理思考">
-<meta property="og:url" content="https://zhangyingcai.github.io/2018/12/07/websign/index.html">
+<meta property="og:title" content="nginx">
+<meta property="og:url" content="https://zhangyingcai.github.io/2019/01/11/nginx/index.html">
 <meta property="og:site_name" content="mumu的个人博客">
-<meta property="og:description" content="webapp在登录的时候怎么控制登录的安全性？ 目前通过https都可以解决这个问题。使用https自动加密传输的数据，从而解决传输密码明文的问题。然后在存储到数据库前通过md5或者其他加密算法进行加密。">
+<meta property="og:description" content="银河系首席踩坑官@ 每天进步一点点1.01^365">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-07T02:34:35.332Z">
+<meta property="og:updated_time" content="2019-01-11T05:20:22.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webapp登录注册时的密码处理思考">
-<meta name="twitter:description" content="webapp在登录的时候怎么控制登录的安全性？ 目前通过https都可以解决这个问题。使用https自动加密传输的数据，从而解决传输密码明文的问题。然后在存储到数据库前通过md5或者其他加密算法进行加密。">
+<meta name="twitter:title" content="nginx">
+<meta name="twitter:description" content="银河系首席踩坑官@ 每天进步一点点1.01^365">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zhangyingcai.github.io/2018/12/07/websign/">
+  <link rel="canonical" href="https://zhangyingcai.github.io/2019/01/11/nginx/">
 
 
 
@@ -140,7 +139,7 @@
   };
 </script>
 
-  <title>webapp登录注册时的密码处理思考 | mumu的个人博客</title>
+  <title>nginx | mumu的个人博客</title>
   
 
 
@@ -408,7 +407,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangyingcai.github.io/2018/12/07/websign/">
+    <link itemprop="mainEntityOfPage" href="https://zhangyingcai.github.io/2019/01/11/nginx/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YingCai Zhang">
@@ -425,7 +424,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">webapp登录注册时的密码处理思考
+          <h1 class="post-title" itemprop="name headline">nginx
               
             
           </h1>
@@ -450,13 +449,9 @@
                 
               
 
-              <time title="创建时间：2018-12-07 10:21:58 / 修改时间：10:34:35" itemprop="dateCreated datePublished" datetime="2018-12-07T10:21:58+08:00">2018-12-07</time>
+              <time title="创建时间：2019-01-11 13:20:22" itemprop="dateCreated datePublished" datetime="2019-01-11T13:20:22+08:00">2019-01-11</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -469,8 +464,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/07/websign/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/07/websign/" itemprop="commentCount"></span>
+                <a href="/2019/01/11/nginx/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/11/nginx/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -498,18 +493,7 @@
       
 
       
-        <p>webapp在登录的时候怎么控制登录的安全性？</p>
-<p>目前通过https都可以解决这个问题。使用https自动加密传输的数据，从而解决传输密码明文的问题。然后在存储到数据库前通过md5或者其他加密算法进行加密。</p>
-<a id="more"></a>
-<p>#加盐 </p>
-<p>不建议只对密码单纯通过加密算法加密，因为存在彩虹表的关系。<br>通常需要对密码加盐，然后进行几次不同加密算法的加密。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 加盐也就是给原密码添加字符串，增加原密码长度</span><br><span class="line">sha256(sha1(md5(salt + password + salt)))</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>但是加盐并不能阻止别人盗取账号，只能确保即使数据库泄露，也不会暴露用户的真实密码。一旦攻击者得到了用户的账号，可以通过暴力破解的方式破解密码。对于这种情况，通常使用验证码增加延时或者限制尝试次数的方式。并且一旦用户输入了错误的密码，也不能直接提示用户输错密码，而应该提示账号或密码错误。</p>
-</blockquote>
-<p>摘自：<a href="https://yuchengkai.cn/docs/zh/frontend/safety.html#%E5%A6%82%E4%BD%95%E9%98%B2%E5%BE%A1-2" target="_blank" rel="noopener">interviewmap</a></p>
-<p>不采用http的才使用前端加密后端解密的方式。</p>
-<p>题外话：不加https的网站我不用，没有安全锁标志的不用!!! ╭(╯^╰)╮</p>
-
+        
       
     </div>
 
@@ -530,12 +514,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/加密/" rel="tag"># 加密</a>
-          
-        </div>
-      
 
       
       
@@ -545,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/virtual-cenos7-5/" rel="next" title="virtualbox-centos7.5-wdcp">
-                <i class="fa fa-chevron-left"></i> virtualbox-centos7.5-wdcp
+              <a href="/2019/01/10/css/" rel="next" title="css">
+                <i class="fa fa-chevron-left"></i> css
               </a>
             
           </div>
@@ -555,8 +533,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/10/jquery/" rel="prev" title="jquery中$的实现方式">
-                jquery中$的实现方式 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/15/vue-router/" rel="prev" title="vue-router">
+                vue-router <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

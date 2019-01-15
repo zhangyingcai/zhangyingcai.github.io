@@ -112,25 +112,25 @@
 
 
 
-  <meta name="description" content="webapp在登录的时候怎么控制登录的安全性？ 目前通过https都可以解决这个问题。使用https自动加密传输的数据，从而解决传输密码明文的问题。然后在存储到数据库前通过md5或者其他加密算法进行加密。">
-<meta name="keywords" content="加密">
+  <meta name="description" content="vue-router的使用总结 传参普通模式（传单个值）123456789101112《路由》/:id 通过在路由后面添`/:id`,`id`是参数名称 传参`:to=&amp;quot;&amp;apos;/user/&amp;apos;+id&amp;quot;` 获取`$route.params.id`const User = &amp;#123;  template: &amp;apos;&amp;lt;div&amp;gt;User &amp;#123;&amp;#">
+<meta name="keywords" content="vue-router">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webapp登录注册时的密码处理思考">
-<meta property="og:url" content="https://zhangyingcai.github.io/2018/12/07/websign/index.html">
+<meta property="og:title" content="vue-router">
+<meta property="og:url" content="https://zhangyingcai.github.io/2019/01/15/vue-router/index.html">
 <meta property="og:site_name" content="mumu的个人博客">
-<meta property="og:description" content="webapp在登录的时候怎么控制登录的安全性？ 目前通过https都可以解决这个问题。使用https自动加密传输的数据，从而解决传输密码明文的问题。然后在存储到数据库前通过md5或者其他加密算法进行加密。">
+<meta property="og:description" content="vue-router的使用总结 传参普通模式（传单个值）123456789101112《路由》/:id 通过在路由后面添`/:id`,`id`是参数名称 传参`:to=&amp;quot;&amp;apos;/user/&amp;apos;+id&amp;quot;` 获取`$route.params.id`const User = &amp;#123;  template: &amp;apos;&amp;lt;div&amp;gt;User &amp;#123;&amp;#">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-07T02:34:35.332Z">
+<meta property="og:updated_time" content="2019-01-15T05:14:53.673Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webapp登录注册时的密码处理思考">
-<meta name="twitter:description" content="webapp在登录的时候怎么控制登录的安全性？ 目前通过https都可以解决这个问题。使用https自动加密传输的数据，从而解决传输密码明文的问题。然后在存储到数据库前通过md5或者其他加密算法进行加密。">
+<meta name="twitter:title" content="vue-router">
+<meta name="twitter:description" content="vue-router的使用总结 传参普通模式（传单个值）123456789101112《路由》/:id 通过在路由后面添`/:id`,`id`是参数名称 传参`:to=&amp;quot;&amp;apos;/user/&amp;apos;+id&amp;quot;` 获取`$route.params.id`const User = &amp;#123;  template: &amp;apos;&amp;lt;div&amp;gt;User &amp;#123;&amp;#">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zhangyingcai.github.io/2018/12/07/websign/">
+  <link rel="canonical" href="https://zhangyingcai.github.io/2019/01/15/vue-router/">
 
 
 
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title>webapp登录注册时的密码处理思考 | mumu的个人博客</title>
+  <title>vue-router | mumu的个人博客</title>
   
 
 
@@ -408,7 +408,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangyingcai.github.io/2018/12/07/websign/">
+    <link itemprop="mainEntityOfPage" href="https://zhangyingcai.github.io/2019/01/15/vue-router/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YingCai Zhang">
@@ -425,7 +425,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">webapp登录注册时的密码处理思考
+          <h1 class="post-title" itemprop="name headline">vue-router
               
             
           </h1>
@@ -450,7 +450,7 @@
                 
               
 
-              <time title="创建时间：2018-12-07 10:21:58 / 修改时间：10:34:35" itemprop="dateCreated datePublished" datetime="2018-12-07T10:21:58+08:00">2018-12-07</time>
+              <time title="创建时间：2019-01-15 11:50:33 / 修改时间：13:14:53" itemprop="dateCreated datePublished" datetime="2019-01-15T11:50:33+08:00">2019-01-15</time>
             
 
             
@@ -469,8 +469,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/07/websign/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/07/websign/" itemprop="commentCount"></span>
+                <a href="/2019/01/15/vue-router/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/15/vue-router/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -498,18 +498,11 @@
       
 
       
-        <p>webapp在登录的时候怎么控制登录的安全性？</p>
-<p>目前通过https都可以解决这个问题。使用https自动加密传输的数据，从而解决传输密码明文的问题。然后在存储到数据库前通过md5或者其他加密算法进行加密。</p>
-<a id="more"></a>
-<p>#加盐 </p>
-<p>不建议只对密码单纯通过加密算法加密，因为存在彩虹表的关系。<br>通常需要对密码加盐，然后进行几次不同加密算法的加密。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 加盐也就是给原密码添加字符串，增加原密码长度</span><br><span class="line">sha256(sha1(md5(salt + password + salt)))</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>但是加盐并不能阻止别人盗取账号，只能确保即使数据库泄露，也不会暴露用户的真实密码。一旦攻击者得到了用户的账号，可以通过暴力破解的方式破解密码。对于这种情况，通常使用验证码增加延时或者限制尝试次数的方式。并且一旦用户输入了错误的密码，也不能直接提示用户输错密码，而应该提示账号或密码错误。</p>
-</blockquote>
-<p>摘自：<a href="https://yuchengkai.cn/docs/zh/frontend/safety.html#%E5%A6%82%E4%BD%95%E9%98%B2%E5%BE%A1-2" target="_blank" rel="noopener">interviewmap</a></p>
-<p>不采用http的才使用前端加密后端解密的方式。</p>
-<p>题外话：不加https的网站我不用，没有安全锁标志的不用!!! ╭(╯^╰)╮</p>
-
+        <p>vue-router的使用总结</p>
+<h1 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h1><h2 id="普通模式（传单个值）"><a href="#普通模式（传单个值）" class="headerlink" title="普通模式（传单个值）"></a>普通模式（传单个值）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">《路由》/:id</span><br><span class="line"> 通过在路由后面添`/:id`,`id`是参数名称</span><br><span class="line"> 传参`:to=&quot;&apos;/user/&apos;+id&quot;`</span><br><span class="line"> 获取`$route.params.id`</span><br><span class="line">const User = &#123;</span><br><span class="line">  template: &apos;&lt;div&gt;User &#123;&#123; $route.params.id &#125;&#125;&lt;/div&gt;&apos;</span><br><span class="line">&#125;</span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: &apos;/user/:id&apos;, component: User &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="进阶模式"><a href="#进阶模式" class="headerlink" title="进阶模式"></a>进阶模式</h2><p>使用<code>props</code>将组件和路由解耦</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// User组件</span><br><span class="line">// 需要将id传入User组件</span><br><span class="line">// 作为User组件的属性直接使用</span><br><span class="line">const User = &#123;</span><br><span class="line">  props: [&apos;id&apos;],</span><br><span class="line">  template: &apos;&lt;div&gt;User &#123;&#123; id &#125;&#125;&lt;/div&gt;&apos;</span><br><span class="line">&#125;</span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: &apos;/user/:id&apos;, component: User, props: true &#125;,</span><br><span class="line"></span><br><span class="line">    // 对于包含命名视图的路由，你必须分别为每个命名视图添加 `props` 选项：</span><br><span class="line">    &#123;</span><br><span class="line">      path: &apos;/user/:id&apos;,</span><br><span class="line">      components: &#123; default: User, sidebar: Sidebar &#125;,</span><br><span class="line">      props: &#123; default: true, sidebar: false &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2>
       
     </div>
 
@@ -532,7 +525,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/加密/" rel="tag"># 加密</a>
+            <a href="/tags/vue-router/" rel="tag"># vue-router</a>
           
         </div>
       
@@ -545,8 +538,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/virtual-cenos7-5/" rel="next" title="virtualbox-centos7.5-wdcp">
-                <i class="fa fa-chevron-left"></i> virtualbox-centos7.5-wdcp
+              <a href="/2019/01/11/nginx/" rel="next" title="nginx">
+                <i class="fa fa-chevron-left"></i> nginx
               </a>
             
           </div>
@@ -555,8 +548,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/10/jquery/" rel="prev" title="jquery中$的实现方式">
-                jquery中$的实现方式 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/15/vue-date/" rel="prev" title="date">
+                date <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -605,8 +598,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -736,6 +738,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#传参"><span class="nav-number">1.</span> <span class="nav-text">传参</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通模式（传单个值）"><span class="nav-number">1.1.</span> <span class="nav-text">普通模式（传单个值）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶模式"><span class="nav-number">1.2.</span> <span class="nav-text">进阶模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">1.3.</span> <span class="nav-text">对象</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

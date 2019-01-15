@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[date]]></title>
+    <url>%2F2019%2F01%2F15%2Fvue-date%2F</url>
+    <content type="text"><![CDATA[date.js 处理日期的函数 12345678910111213141516171819202122232425262728293031export function formatDate(date, fmt) &#123; if (/(y+)/.test(fmt)) &#123; fmt = fmt.replace(RegExp.$1, (date.getFullYear() + &apos;&apos;).substr(4 - RegExp.$1.length)) &#125; const o = &#123; &apos;M+&apos;: date.getMonth() + 1, &apos;d+&apos;: date.getDate(), &apos;h+&apos;: date.getHours(), &apos;m+&apos;: date.getMinutes(), &apos;s+&apos;: date.getSeconds() &#125; for (const k in o) &#123; if (new RegExp(`($&#123;k&#125;)`).test(fmt)) &#123; const str = o[k] + &apos;&apos; fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str)) &#125; &#125; return fmt&#125;function padLeftZero(str) &#123; return (&apos;00&apos; + str).substr(str.length)&#125;// 用法// 可以使用filterdateFilter(number) &#123; // js默认是毫秒，先转换为毫秒 const date = new Date(number * 1e3) return formatDate(date, &apos;yyyy.MM.dd hh:mm:ss&apos;)&#125;]]></content>
+      <tags>
+        <tag>date</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[vue-router]]></title>
+    <url>%2F2019%2F01%2F15%2Fvue-router%2F</url>
+    <content type="text"><![CDATA[vue-router的使用总结 传参普通模式（传单个值）123456789101112《路由》/:id 通过在路由后面添`/:id`,`id`是参数名称 传参`:to=&quot;&apos;/user/&apos;+id&quot;` 获取`$route.params.id`const User = &#123; template: &apos;&lt;div&gt;User &#123;&#123; $route.params.id &#125;&#125;&lt;/div&gt;&apos;&#125;const router = new VueRouter(&#123; routes: [ &#123; path: &apos;/user/:id&apos;, component: User &#125; ]&#125;) 进阶模式使用props将组件和路由解耦 12345678910111213141516171819// User组件// 需要将id传入User组件// 作为User组件的属性直接使用const User = &#123; props: [&apos;id&apos;], template: &apos;&lt;div&gt;User &#123;&#123; id &#125;&#125;&lt;/div&gt;&apos;&#125;const router = new VueRouter(&#123; routes: [ &#123; path: &apos;/user/:id&apos;, component: User, props: true &#125;, // 对于包含命名视图的路由，你必须分别为每个命名视图添加 `props` 选项： &#123; path: &apos;/user/:id&apos;, components: &#123; default: User, sidebar: Sidebar &#125;, props: &#123; default: true, sidebar: false &#125; &#125; ]&#125;) 对象]]></content>
+      <tags>
+        <tag>vue-router</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[nginx]]></title>
+    <url>%2F2019%2F01%2F11%2Fnginx%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[css]]></title>
+    <url>%2F2019%2F01%2F10%2Fcss%2F</url>
+    <content type="text"><![CDATA[用于记录css遇到的问题 button123456typebutton的类型。可选值：* submit: 此按钮将表单数据提交给服务器。如果未指定属性，或者属性动态更改为空值或无效值，则此值为默认值。* reset: 此按钮重置所有组件为初始值。* button: 此按钮没有默认行为。它可以有与元素事件相关的客户端脚本，当事件出现时可触发。* menu: 此按钮打开一个由指定&lt;menu&gt;元素进行定义的弹出菜单。 注：默认为submit可以出发输入框回车事件。 text-overflow语法 123属性确定如何向用户发出未显示的溢出内容信号。它可以被剪切，显示一个省略号（&apos;...&apos;，U + 2026 HORIZONTAL ELLIPSIS）或显示一个自定义字符串。这个属性并不会强制&quot;溢出&quot;事件的发生，因此为了能让&quot;text-overflow&quot;能够生效，程序员们必须要在元素上添加几个额外的属性，比如&quot;将overflow 设置为hidden&quot;。 图片自适应一般是控制宽度高度自适应 用代码翻译一下就是12max-width: 100%;height: auto;]]></content>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[gulp]]></title>
     <url>%2F2019%2F01%2F03%2Fgulp%2F</url>
     <content type="text"><![CDATA[gulp使用记录并形成自己的一套插件 复制文件]]></content>
