@@ -112,24 +112,25 @@
 
 
 
-  <meta name="description" content="银河系首席踩坑官@ 每天进步一点点1.01^365">
+  <meta name="description" content="es6笔记">
+<meta name="keywords" content="es6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx">
-<meta property="og:url" content="https://zhangyingcai.github.io/2019/01/11/nginx/index.html">
+<meta property="og:title" content="es6">
+<meta property="og:url" content="https://zhangyingcai.github.io/2019/01/17/es6/index.html">
 <meta property="og:site_name" content="mumu的个人博客">
-<meta property="og:description" content="银河系首席踩坑官@ 每天进步一点点1.01^365">
+<meta property="og:description" content="es6笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-11T05:20:22.809Z">
+<meta property="og:updated_time" content="2019-01-17T10:36:55.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx">
-<meta name="twitter:description" content="银河系首席踩坑官@ 每天进步一点点1.01^365">
+<meta name="twitter:title" content="es6">
+<meta name="twitter:description" content="es6笔记">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zhangyingcai.github.io/2019/01/11/nginx/">
+  <link rel="canonical" href="https://zhangyingcai.github.io/2019/01/17/es6/">
 
 
 
@@ -139,7 +140,7 @@
   };
 </script>
 
-  <title>nginx | mumu的个人博客</title>
+  <title>es6 | mumu的个人博客</title>
   
 
 
@@ -407,7 +408,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangyingcai.github.io/2019/01/11/nginx/">
+    <link itemprop="mainEntityOfPage" href="https://zhangyingcai.github.io/2019/01/17/es6/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YingCai Zhang">
@@ -424,7 +425,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nginx
+          <h1 class="post-title" itemprop="name headline">es6
               
             
           </h1>
@@ -449,9 +450,13 @@
                 
               
 
-              <time title="创建时间：2019-01-11 13:20:22" itemprop="dateCreated datePublished" datetime="2019-01-11T13:20:22+08:00">2019-01-11</time>
+              <time title="创建时间：2019-01-17 09:16:43 / 修改时间：18:36:55" itemprop="dateCreated datePublished" datetime="2019-01-17T09:16:43+08:00">2019-01-17</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -464,8 +469,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/11/nginx/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/11/nginx/" itemprop="commentCount"></span>
+                <a href="/2019/01/17/es6/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/17/es6/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -493,7 +498,25 @@
       
 
       
-        
+        <p>es6笔记</p>
+<a id="more"></a>
+<h1 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h1><p>英文：Hoisting</p>
+<p><code>变量提升</code>变量和函数的声明移动到当前执行上下文(块)的最前面。<br>应用范围：数据类型、变量、函数</p>
+<p>runtime：<br>1.并不是物理位置的移动，而是在编译阶段被放到内存中。<br>2.仅提升声明，而不提示初始化</p>
+<p>历史原因：<br>提升存在的根本原因就是为了解决函数间互相调用的情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    catName(&quot;Chloe&quot;);</span><br><span class="line"></span><br><span class="line">    function catName(name) &#123;</span><br><span class="line">        console.log(&quot;我的猫名叫 &quot; + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">catName(&quot;Tom&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function test1() &#123;</span><br><span class="line">    test2()</span><br><span class="line">&#125;</span><br><span class="line">function test2() &#123;</span><br><span class="line">    test1()</span><br><span class="line">&#125;</span><br><span class="line">test1()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>let 不存在 Hoisting<br>var 在全局作用域下声明变量会导致变量挂载在 window 上，<code>let`</code>const`两者不会</p>
+</blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Hoisting" target="_blank" rel="noopener">tomdn</a></p>
+<h1 id="暂时性死区"><a href="#暂时性死区" class="headerlink" title="暂时性死区"></a>暂时性死区</h1><p>let、const 因为暂时性死区的原因，不能在声明前使用</p>
+<blockquote>
+<p>在 ECMAScript 6 中，let（const）将不会提升变量到代码块的顶部。因此，在变量声明之前引用这个变量，将抛出引用错误（ReferenceError）。这个变量将从代码块一开始的时候就处在一个“暂时性死区”，直到这个变量被声明为止。</p>
+</blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types" target="_blank" rel="noopener">tomdn</a></p>
+<h1 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h1><h1 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h1><p>历史原因：用于模块化，通过函数作用域解决命名冲突、污染全局作用域的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;&#125;)()</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -514,6 +537,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/es6/" rel="tag"># es6</a>
+          
+        </div>
+      
 
       
       
@@ -523,8 +552,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/10/css/" rel="next" title="css">
-                <i class="fa fa-chevron-left"></i> css
+              <a href="/2019/01/15/vue-date/" rel="next" title="date">
+                <i class="fa fa-chevron-left"></i> date
               </a>
             
           </div>
@@ -532,10 +561,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/15/vue-router/" rel="prev" title="vue-router">
-                vue-router <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,8 +608,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -716,6 +750,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量提升"><span class="nav-number">1.</span> <span class="nav-text">变量提升</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#暂时性死区"><span class="nav-number">2.</span> <span class="nav-text">暂时性死区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型继承"><span class="nav-number">3.</span> <span class="nav-text">原型继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#立即执行函数"><span class="nav-number">4.</span> <span class="nav-text">立即执行函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -121,7 +121,8 @@
 <meta property="og:description" content="基础">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://zhangyingcai.github.io/2018/12/26/js-base/微信截图_20181226091322.png">
-<meta property="og:updated_time" content="2019-01-07T11:46:12.272Z">
+<meta property="og:image" content="https://zhangyingcai.github.io/2018/12/26/js-base/16716dec14421e47.png">
+<meta property="og:updated_time" content="2019-01-17T10:51:10.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript 基础">
 <meta name="twitter:description" content="基础">
@@ -282,7 +283,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
 
   </li>
         
@@ -320,7 +321,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">21</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">22</span></a>
 
   </li>
 
@@ -469,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-07 19:46:12" itemprop="dateModified" datetime="2019-01-07T19:46:12+08:00">2019-01-07</time>
+                <time title="修改时间：2019-01-17 18:51:10" itemprop="dateModified" datetime="2019-01-17T18:51:10+08:00">2019-01-17</time>
               
             
           </span>
@@ -563,6 +564,22 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function f()&#123;</span><br><span class="line">  return this.a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var g = f.bind(&#123;a:&quot;azerty&quot;&#125;);</span><br><span class="line">console.log(g()); // azerty</span><br><span class="line"></span><br><span class="line">var h = g.bind(&#123;a:&apos;yoo&apos;&#125;); // bind只生效一次！</span><br><span class="line">console.log(h()); // azerty</span><br><span class="line"></span><br><span class="line">var o = &#123;a:37, f:f, g:g, h:h&#125;;</span><br><span class="line">console.log(o.f(), o.g(), o.h()); // 37, azerty, azerty</span><br></pre></td></tr></table></figure>
 <p>es6箭头函数：this与封闭词法环境中的this保持一致。全局代码中是window。</p>
 <p>当代码被内联on-event函数调用时，this指向监听器当前所在的dom。<br>注意: 只有最外层的this是这样设置的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=&quot;alert(this.tagName.toLowerCase());&quot;&gt;</span><br><span class="line">  Show this</span><br><span class="line">&lt;/button&gt;</span><br><span class="line">// dom</span><br><span class="line">&lt;button onclick=&quot;alert((function()&#123;return this&#125;)());&quot;&gt;</span><br><span class="line">  Show inner this</span><br><span class="line">&lt;/button&gt;</span><br><span class="line">// 等同于</span><br><span class="line">alert((function()&#123;return this&#125;)()); // window</span><br><span class="line">alert((function()&#123;&apos;use strict&apos;; return this&#125;)()); // undefined</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener">参见this详解</a></p>
+<h1 id="和-的区别"><a href="#和-的区别" class="headerlink" title="== 和 === 的区别"></a>== 和 === 的区别</h1><p>问题：<code>[]==![]</code>的结果是什么，<code>[]==[]</code>呢?</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Comparison_Operators" target="_blank" rel="noopener">参见比较运算符详解</a></p>
+<blockquote>
+<p>JavaScript 有两种比较方式：严格比较运算符和转换类型比较运算符。对于严格比较运算符（===）来说，仅当两个操作数的类型相同且值相等为 true，而对于被广泛使用的比较运算符（==）来说，会在进行比较之前，将两个操作数转换成相同的类型。对于关系运算符（比如 &lt;=）来说，会先将操作数转为原始值，使它们类型相同，再进行比较运算。</p>
+</blockquote>
+<blockquote>
+<p>字符串比较则是使用基于标准字典的 Unicode 值来进行比较的。</p>
+</blockquote>
+<blockquote>
+<p>比较操作符会为两个不同类型的操作数转换类型，然后进行严格比较。当两个操作数都是对象时，JavaScript会比较其内部引用，当且仅当他们的引用指向内存中的相同对象（区域）时才相等，即他们在栈内存中的引用地址相同。</p>
+</blockquote>
+<blockquote>
+<p>当比较数字和字符串时，字符串会转换成数字值。 JavaScript 尝试将数字字面量转换为数字类型的值。 首先, 一个数学上的值会从数字字面量中衍生出来，然后得到被四舍五入后的数字类型的值。<br>如果其中一个操作数为布尔类型，那么布尔操作数如果为true，那么会转换为1，如果为false，会转换为整数0，即0。<br>如果一个对象与数字或字符串相比较，JavaScript会尝试返回对象的默认值。操作符会尝试通过方法valueOf和toString将对象转换为其原始值（一个字符串或数字类型的值）。如果尝试转换失败，会产生一个运行时错误。<br>注意：当且仅当与原始值比较时，对象会被转换为原始值。当两个操作数均为对象时，它们作为对象进行比较，仅当它们引用相同对象时返回true。</p>
+</blockquote>
+<p>类型转换<br><img src="/2018/12/26/js-base/16716dec14421e47.png" title="类型转换"></p>
 
       
     </div>
@@ -686,7 +703,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -750,7 +767,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -809,7 +828,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原始类型"><span class="nav-number">2.</span> <span class="nav-text">原始类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象类型"><span class="nav-number">3.</span> <span class="nav-text">对象类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typeof-vs-instanceof"><span class="nav-number">4.</span> <span class="nav-text">typeof vs instanceof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类型转换"><span class="nav-number">5.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">6.</span> <span class="nav-text">this</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原始类型"><span class="nav-number">2.</span> <span class="nav-text">原始类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象类型"><span class="nav-number">3.</span> <span class="nav-text">对象类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typeof-vs-instanceof"><span class="nav-number">4.</span> <span class="nav-text">typeof vs instanceof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类型转换"><span class="nav-number">5.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">6.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#和-的区别"><span class="nav-number">7.</span> <span class="nav-text">== 和 === 的区别</span></a></li></ol></div>
             
 
           </div>
