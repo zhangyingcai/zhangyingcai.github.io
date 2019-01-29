@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vue]]></title>
+    <url>%2F2019%2F01%2F24%2Fvue%2F</url>
+    <content type="text"><![CDATA[记录vue的知识点]]></content>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[js-api]]></title>
+    <url>%2F2019%2F01%2F23%2Fjs-api%2F</url>
+    <content type="text"><![CDATA[用于平常学到的js知识点 Array.prototype.includesmdn 语法：12345arr.includes(searchElement)arr.includes(searchElement, fromIndex)返回值：Boolean 用于判断数组中是否存在某个值 includes() 作为一个通用方法includes() 方法有意设计为通用方法。它不要求this值是数组对象，所以它可以被用于其他类型的对象 (比如类数组对象)。下面的例子展示了 在函数的arguments对象上调用的includes() 方法。 1234(function() &#123; console.log([].includes.call(arguments, &apos;a&apos;)); // true console.log([].includes.call(arguments, &apos;d&apos;)); // false&#125;)(&apos;a&apos;,&apos;b&apos;,&apos;c&apos;); element.scrollIntoView() 让当前的元素滚动到浏览器窗口的可视区域语法123element.scrollIntoView(); // 等同于element.scrollIntoView(true) element.scrollIntoView(alignToTop); // Boolean型参数 element.scrollIntoView(scrollIntoViewOptions); // Object型参数 mdn]]></content>
+      <tags>
+        <tag>jsapi</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[es6]]></title>
     <url>%2F2019%2F01%2F17%2Fes6%2F</url>
     <content type="text"><![CDATA[es6笔记 变量提升英文：Hoisting 变量提升变量和函数的声明移动到当前执行上下文(块)的最前面。应用范围：数据类型、变量、函数 runtime：1.并不是物理位置的移动，而是在编译阶段被放到内存中。2.仅提升声明，而不提示初始化 历史原因：提升存在的根本原因就是为了解决函数间互相调用的情况 12345678&#123; catName(&quot;Chloe&quot;); function catName(name) &#123; console.log(&quot;我的猫名叫 &quot; + name); &#125;&#125;catName(&quot;Tom&quot;); 1234567function test1() &#123; test2()&#125;function test2() &#123; test1()&#125;test1() let 不存在 Hoistingvar 在全局作用域下声明变量会导致变量挂载在 window 上，let`const`两者不会 tomdn 暂时性死区let、const 因为暂时性死区的原因，不能在声明前使用 在 ECMAScript 6 中，let（const）将不会提升变量到代码块的顶部。因此，在变量声明之前引用这个变量，将抛出引用错误（ReferenceError）。这个变量将从代码块一开始的时候就处在一个“暂时性死区”，直到这个变量被声明为止。 tomdn 原型继承立即执行函数历史原因：用于模块化，通过函数作用域解决命名冲突、污染全局作用域的问题。1(function()&#123;&#125;)()]]></content>
@@ -133,7 +149,7 @@
   <entry>
     <title><![CDATA[jquery中$的实现方式]]></title>
     <url>%2F2018%2F12%2F10%2Fjquery%2F</url>
-    <content type="text"><![CDATA[实现方式(网上找的)123456789101112131415161718192021&lt;script&gt; (function(w)&#123; //工厂 function jQuery(selector, context)&#123; return new jQuery.fn.init(selector, context); &#125; //给原型提供一个简写方式 jQuery.fn = jQuery.prototype = &#123; &#125;; //init才是jQuery中真正的构造函数 var init = jQuery.fn.init = function(selector, context)&#123; // 构造函数 &#125;; //把构造函数的原型，替换为jQuery工厂的原型 //这么做的目的是为了实现jQuery的插件机制，让外界可以通过jQuery方便的进行扩展 init.prototype = jQuery.fn; w.jQuery = w.$ = jQuery; &#125;(window));&lt;/script&gt; 原链接 1234(function(w)&#123; // dosomthing w.jQuery = w.$ = jQuery; &#125;)(window) 目的：通过全局对象window可以调用对象jQuery或者$ 然后我们声明一个对象jQuery1234(function(w)&#123; function jQuery(selector, context)&#123;&#125; w.jQuery = w.$ = jQuery;&#125;)(window) 效果: 大功告成！但是jQuery显然是更深一层次的做法。示例方式是将原型转换为简化方法fn。然后在jQuery原型上添加一个init方法。 工厂模式什么是工厂模式？怎么在javascript使用？ 工厂模式是用来创建对象的一种最常见的设计模式。我们不暴露创建对象的具体逻辑，而是将逻辑封装到一个函数中，如示例中的jQuery函数，那么这个函数就可以被视为一个工厂。 工厂模式根据抽象程度的不同可以分为：简单工厂，工厂方法和抽象工厂。 工厂模式]]></content>
+    <content type="text"><![CDATA[实现方式(网上找的)123456789101112131415161718192021&lt;script&gt; (function(w)&#123; //工厂 function jQuery(selector, context)&#123; return new jQuery.fn.init(selector, context); &#125; //给原型提供一个简写方式 jQuery.fn = jQuery.prototype = &#123; &#125;; //init才是jQuery中真正的构造函数 var init = jQuery.fn.init = function(selector, context)&#123; // 构造函数 &#125;; //把构造函数的原型，替换为jQuery工厂的原型 //这么做的目的是为了实现jQuery的插件机制，让外界可以通过jQuery方便的进行扩展 init.prototype = jQuery.fn; w.jQuery = w.$ = jQuery; &#125;(window));&lt;/script&gt; 原链接 1234(function(w)&#123; // dosomthing w.jQuery = w.$ = jQuery; &#125;)(window) 目的：通过全局对象window可以调用对象jQuery或者$ 然后我们声明一个对象jQuery1234(function(w)&#123; function jQuery(selector, context)&#123;&#125; w.jQuery = w.$ = jQuery;&#125;)(window) 效果: 大功告成！但是jQuery显然是更深一层次的做法。示例方式是将原型转换为简化方法fn。然后在jQuery原型上添加一个init方法。 工厂模式什么是工厂模式？怎么在javascript使用？ 工厂模式是用来创建对象的一种最常见的设计模式。我们不暴露创建对象的具体逻辑，而是将逻辑封装到一个函数中，如示例中的jQuery函数，那么这个函数就可以被视为一个工厂。 工厂模式根据抽象程度的不同可以分为：简单工厂，工厂方法和抽象工厂。 工厂模式 toggle 切换显示/隐藏mdn类似的例子]]></content>
       <tags>
         <tag>jQuery</tag>
       </tags>

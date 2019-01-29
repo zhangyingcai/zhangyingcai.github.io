@@ -112,25 +112,25 @@
 
 
 
-  <meta name="description" content="记录学习浏览器的事件注册机制">
-<meta name="keywords" content="browser event">
+  <meta name="description" content="用于平常学到的js知识点">
+<meta name="keywords" content="jsapi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器的事件注册机制">
-<meta property="og:url" content="https://zhangyingcai.github.io/2018/12/20/browser-event/index.html">
+<meta property="og:title" content="js-api">
+<meta property="og:url" content="https://zhangyingcai.github.io/2019/01/23/js-api/index.html">
 <meta property="og:site_name" content="mumu的个人博客">
-<meta property="og:description" content="记录学习浏览器的事件注册机制">
+<meta property="og:description" content="用于平常学到的js知识点">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-20T10:21:24.356Z">
+<meta property="og:updated_time" content="2019-01-23T06:39:49.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浏览器的事件注册机制">
-<meta name="twitter:description" content="记录学习浏览器的事件注册机制">
+<meta name="twitter:title" content="js-api">
+<meta name="twitter:description" content="用于平常学到的js知识点">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zhangyingcai.github.io/2018/12/20/browser-event/">
+  <link rel="canonical" href="https://zhangyingcai.github.io/2019/01/23/js-api/">
 
 
 
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title>浏览器的事件注册机制 | mumu的个人博客</title>
+  <title>js-api | mumu的个人博客</title>
   
 
 
@@ -408,7 +408,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangyingcai.github.io/2018/12/20/browser-event/">
+    <link itemprop="mainEntityOfPage" href="https://zhangyingcai.github.io/2019/01/23/js-api/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YingCai Zhang">
@@ -425,7 +425,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浏览器的事件注册机制
+          <h1 class="post-title" itemprop="name headline">js-api
               
             
           </h1>
@@ -450,7 +450,7 @@
                 
               
 
-              <time title="创建时间：2018-12-20 17:56:08 / 修改时间：18:21:24" itemprop="dateCreated datePublished" datetime="2018-12-20T17:56:08+08:00">2018-12-20</time>
+              <time title="创建时间：2019-01-23 09:30:02 / 修改时间：14:39:49" itemprop="dateCreated datePublished" datetime="2019-01-23T09:30:02+08:00">2019-01-23</time>
             
 
             
@@ -469,8 +469,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/20/browser-event/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/20/browser-event/" itemprop="commentCount"></span>
+                <a href="/2019/01/23/js-api/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/23/js-api/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -498,29 +498,15 @@
       
 
       
-        <p>记录学习浏览器的事件注册机制</p>
+        <p>用于平常学到的js知识点</p>
 <a id="more"></a>
-<h1 id="事件触发的三个阶段"><a href="#事件触发的三个阶段" class="headerlink" title="事件触发的三个阶段"></a>事件触发的三个阶段</h1><ul>
-<li>window向事件触发处传播，遇到注册的捕获事件会触发</li>
-<li>传播到事件触发处触发注册的事件</li>
-<li>从事件触发处向window传播，遇到注册的冒泡事件会触发</li>
-</ul>
-<blockquote>
-<p>事件触发一般来说会按照上面的顺序进行，但是也有特例，如果给一个目标节点同时注册冒泡和捕获事件，事件触发会按照注册的顺序执行。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 以下会先打印冒泡然后是捕获</span><br><span class="line">node.addEventListener(&apos;click&apos;,(event) =&gt;&#123;</span><br><span class="line">    console.log(&apos;冒泡&apos;)</span><br><span class="line">&#125;,false);</span><br><span class="line">node.addEventListener(&apos;click&apos;,(event) =&gt;&#123;</span><br><span class="line">    console.log(&apos;捕获 &apos;)</span><br><span class="line">&#125;,true)</span><br></pre></td></tr></table></figure>
-<p>那么我们怎么区分注册的事件是冒泡事件还是捕获事件？</p>
-<p>我们通常使用addEventListener注册事件，该函数的第三个参数可以是布尔值，也可以是对象。对于布尔值 useCapture 参数来说，该参数默认值为 false 。useCapture 决定了注册的事件是捕获事件还是冒泡事件。对于对象参数来说，可以使用以下几个属性</p>
-<ul>
-<li>capture，布尔值，和 useCapture 作用一样</li>
-<li>once，布尔值，值为 true 表示该回调只会调用一次，调用后会移除监听</li>
-<li>passive，布尔值，表示永远不会调用 preventDefault</li>
-</ul>
-<blockquote>
-<p>一般来说，我们只希望事件只触发在目标上，这时候可以使用 stopPropagation 来阻止事件的进一步传播。通常我们认为 stopPropagation 是用来阻止事件冒泡的，其实该函数也可以阻止捕获事件。stopImmediatePropagation 同样也能实现阻止事件，但是还能阻止该事件目标执行别的注册事件。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">node.addEventListener(&apos;click&apos;,(event) =&gt;&#123;</span><br><span class="line">    event.stopImmediatePropagation()</span><br><span class="line">    console.log(&apos;冒泡&apos;)</span><br><span class="line">&#125;,false);</span><br><span class="line">// 点击 node 只会执行上面的函数，该函数不会执行</span><br><span class="line">node.addEventListener(&apos;click&apos;,(event) =&gt; &#123;</span><br><span class="line">    console.log(&apos;捕获 &apos;)</span><br><span class="line">&#125;,true)</span><br></pre></td></tr></table></figure>
-<p>stopPropagation只能阻止事件的进一步传播，默认注册的事件还是会执行。<br>和他相反的是preventDefault方法，用于阻止默认事件的执行，但是会发送事件的进一步传播，通常是对注册事件重新定义时使用。<br>return false;就等于同时调用了event.stopPropagation()和event.preventDefault()，即会阻止事件冒泡也会阻止默认事件。</p>
+<h1 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes"></a>Array.prototype.includes</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank" rel="noopener">mdn</a></p>
+<p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">arr.includes(searchElement)</span><br><span class="line">arr.includes(searchElement, fromIndex)</span><br><span class="line"></span><br><span class="line">返回值：</span><br><span class="line">Boolean</span><br></pre></td></tr></table></figure></p>
+<p>用于判断数组中是否存在某个值</p>
+<h2 id="includes-作为一个通用方法"><a href="#includes-作为一个通用方法" class="headerlink" title="includes() 作为一个通用方法"></a>includes() 作为一个通用方法</h2><p>includes() 方法有意设计为通用方法。它不要求this值是数组对象，所以它可以被用于其他类型的对象 (比如类数组对象)。下面的例子展示了 在函数的arguments对象上调用的includes() 方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(function() &#123;</span><br><span class="line">  console.log([].includes.call(arguments, &apos;a&apos;)); // true</span><br><span class="line">  console.log([].includes.call(arguments, &apos;d&apos;)); // false</span><br><span class="line">&#125;)(&apos;a&apos;,&apos;b&apos;,&apos;c&apos;);</span><br></pre></td></tr></table></figure>
+<h1 id="element-scrollIntoView-让当前的元素滚动到浏览器窗口的可视区域"><a href="#element-scrollIntoView-让当前的元素滚动到浏览器窗口的可视区域" class="headerlink" title="element.scrollIntoView() 让当前的元素滚动到浏览器窗口的可视区域"></a>element.scrollIntoView() 让当前的元素滚动到浏览器窗口的可视区域</h1><p>语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">element.scrollIntoView(); // 等同于element.scrollIntoView(true) </span><br><span class="line">element.scrollIntoView(alignToTop); // Boolean型参数 </span><br><span class="line">element.scrollIntoView(scrollIntoViewOptions); // Object型参数</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener">mdn</a></p>
 
       
     </div>
@@ -544,7 +530,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/browser-event/" rel="tag"># browser event</a>
+            <a href="/tags/jsapi/" rel="tag"># jsapi</a>
           
         </div>
       
@@ -557,8 +543,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/18/js-bibao/" rel="next" title="闭包">
-                <i class="fa fa-chevron-left"></i> 闭包
+              <a href="/2019/01/17/es6/" rel="next" title="es6">
+                <i class="fa fa-chevron-left"></i> es6
               </a>
             
           </div>
@@ -567,8 +553,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/20/js-call-stack/" rel="prev" title="前端工程师必须懂得概念（一）">
-                前端工程师必须懂得概念（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/24/vue/" rel="prev" title="vue">
+                vue <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -773,7 +759,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件触发的三个阶段"><span class="nav-number">1.</span> <span class="nav-text">事件触发的三个阶段</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Array-prototype-includes"><span class="nav-number">1.</span> <span class="nav-text">Array.prototype.includes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#includes-作为一个通用方法"><span class="nav-number">1.1.</span> <span class="nav-text">includes() 作为一个通用方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#element-scrollIntoView-让当前的元素滚动到浏览器窗口的可视区域"><span class="nav-number">2.</span> <span class="nav-text">element.scrollIntoView() 让当前的元素滚动到浏览器窗口的可视区域</span></a></li></ol></div>
             
 
           </div>
