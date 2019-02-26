@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="记录vue的知识点">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-24T08:41:24.416Z">
+<meta property="og:updated_time" content="2019-02-26T06:19:30.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue">
 <meta name="twitter:description" content="记录vue的知识点">
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">20</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">27</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">24</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">32</span></a>
 
   </li>
 
@@ -450,12 +450,24 @@
                 
               
 
-              <time title="创建时间：2019-01-24 16:40:52 / 修改时间：16:41:24" itemprop="dateCreated datePublished" datetime="2019-01-24T16:40:52+08:00">2019-01-24</time>
+              <time title="创建时间：2019-01-24 16:40:52" itemprop="dateCreated datePublished" datetime="2019-01-24T16:40:52+08:00">2019-01-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-26 14:19:30" itemprop="dateModified" datetime="2019-02-26T14:19:30+08:00">2019-02-26</time>
               
             
           </span>
@@ -500,7 +512,18 @@
       
         <p>记录vue的知识点</p>
 <a id="more"></a>
-
+<h1 id="声明式渲染"><a href="#声明式渲染" class="headerlink" title="声明式渲染"></a>声明式渲染</h1><p>模板语法<br>插值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vue.js的核心是一个允许采用简洁的模板语法来声明式地将数据渲染进DOM的系统。</span><br><span class="line">&#123;&#123; 参数|单个表达式 &#125;&#125;</span><br><span class="line"></span><br><span class="line">单个表达式包括：运算、三目运算</span><br><span class="line">&#123;&#123; message.split(&apos;&apos;).reverse().join(&apos;&apos;) &#125;&#125; // 将字符串翻转</span><br></pre></td></tr></table></figure>
+<h1 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h1><p>beforeCreate // 实例初始化之后，数据观测和事件配置之前，也就是说这时候是不能获取数据和事件的<br>created // 在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，<code>$el</code> 属性目前不可见。<br>beforeMount // 在挂载开始之前被调用：相关的 <code>render</code> 函数首次被调用。<br>mounted // <code>el</code> 被新创建的<code>vm.$el</code> 替换，并挂载到实例上去之后调用该钩子。如果 <code>root</code>实例挂载了一个文档内元素，当 <code>mounted</code> 被调用时 <code>vm.$el</code> 也在文档内。组件中如果有子组件的话，会递归挂载子组件，只有当所有子组件全部挂载完毕，才会执行根组件的挂载钩子。<br>beforeUpdate // 数据更新前<br>updated // 数据更新后<br>beforeDestroy // 销毁之前 适合移除时间、定时器 可能会引起内存泄漏<br>destroyed // 销毁 在销毁组件，如果有子组件的话，会递归销毁子组件，直到所有的子组件都销毁完毕之后执行</p>
+<h1 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`v-show`始终渲染元素，通过切换display来控制元素的显示隐藏，有较大的初始渲染开销。</span><br></pre></td></tr></table></figure>
+<h1 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`v-if`指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回truthy值的时候被渲染。</span><br></pre></td></tr></table></figure>
+<h1 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实现双向绑定 可以添加修饰符</span><br></pre></td></tr></table></figure>
+<h1 id="trim"><a href="#trim" class="headerlink" title=".trim"></a>.trim</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果要自动过滤用户输入的首尾空白字符，可以给 `v-model` 添加 `trim` 修饰符：</span><br><span class="line"></span><br><span class="line">`&lt;input v-model.trim=&quot;msg&quot;&gt;`</span><br></pre></td></tr></table></figure>
+<h1 id="number"><a href="#number" class="headerlink" title=".number"></a>.number</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">如果想自动将用户的输入值转为数值类型，可以给 `v-model` 添加 `number` 修饰符：</span><br><span class="line"></span><br><span class="line">`&lt;input v-model.number=&quot;age&quot; type=&quot;number&quot;&gt;`</span><br><span class="line">这通常很有用，因为即使在 `type=&quot;number&quot;` 时，`HTML` 输入元素的值也总会返回字符串。</span><br><span class="line">如果这个值无法被 `parseFloat()` 解析，则会返回原始的值。(说明`number`的实现是通过`parseFloat()`方法实现的)</span><br></pre></td></tr></table></figure>
+<h1 id="lazy"><a href="#lazy" class="headerlink" title=".lazy"></a>.lazy</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在默认情况下，`v-model` 在每次 `input` 事件触发后将输入框的值与数据进行同步 。</span><br><span class="line">添加`lazy`从而转变为使用`change`时间进行同步，也就是在每次改变的时候进行同步。</span><br></pre></td></tr></table></figure>
+<h1 id="v-once"><a href="#v-once" class="headerlink" title="v-once"></a>v-once</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">只赋值一次</span><br></pre></td></tr></table></figure>
+<h1 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h1><h2 id="prevent"><a href="#prevent" class="headerlink" title=".prevent"></a>.prevent</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">`.prevent` 修饰符告诉 `v-on` 指令对于触发的事件调用 `event.preventDefault()`</span><br><span class="line">&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;...&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 阻止单击事件继续传播 --&gt;</span><br><span class="line">&lt;a v-on:click.stop=&quot;doThis&quot;&gt;&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 提交事件不再重载页面 --&gt;</span><br><span class="line">&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 修饰符可以串联 --&gt;</span><br><span class="line">&lt;a v-on:click.stop.prevent=&quot;doThat&quot;&gt;&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 只有修饰符 --&gt;</span><br><span class="line">&lt;form v-on:submit.prevent&gt;&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 添加事件监听器时使用事件捕获模式 --&gt;</span><br><span class="line">&lt;!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 --&gt;</span><br><span class="line">&lt;div v-on:click.capture=&quot;doThis&quot;&gt;...&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 只当在 event.target 是当前元素自身时触发处理函数 --&gt;</span><br><span class="line">&lt;!-- 即事件不是从内部元素触发的 --&gt;</span><br><span class="line">&lt;div v-on:click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -545,6 +568,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/13/css3/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -592,8 +619,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -610,7 +646,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -680,7 +716,21 @@
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -729,6 +779,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#声明式渲染"><span class="nav-number">1.</span> <span class="nav-text">声明式渲染</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue的生命周期"><span class="nav-number">2.</span> <span class="nav-text">vue的生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#v-show"><span class="nav-number">3.</span> <span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#v-if"><span class="nav-number">4.</span> <span class="nav-text">v-if</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#v-model"><span class="nav-number">5.</span> <span class="nav-text">v-model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#trim"><span class="nav-number">6.</span> <span class="nav-text">.trim</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#number"><span class="nav-number">7.</span> <span class="nav-text">.number</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lazy"><span class="nav-number">8.</span> <span class="nav-text">.lazy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#v-once"><span class="nav-number">9.</span> <span class="nav-text">v-once</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件修饰符"><span class="nav-number">10.</span> <span class="nav-text">事件修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#prevent"><span class="nav-number">10.1.</span> <span class="nav-text">.prevent</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
