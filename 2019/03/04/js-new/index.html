@@ -112,25 +112,25 @@
 
 
 
-  <meta name="description" content="date.js 处理日期的函数">
-<meta name="keywords" content="date">
+  <meta name="description" content="js中的new操作符">
+<meta name="keywords" content="new">
 <meta property="og:type" content="article">
-<meta property="og:title" content="date">
-<meta property="og:url" content="https://zhangyingcai.github.io/2019/01/15/vue-date/index.html">
+<meta property="og:title" content="js-new">
+<meta property="og:url" content="https://zhangyingcai.github.io/2019/03/04/js-new/index.html">
 <meta property="og:site_name" content="mumu的个人博客">
-<meta property="og:description" content="date.js 处理日期的函数">
+<meta property="og:description" content="js中的new操作符">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-15T08:57:44.027Z">
+<meta property="og:updated_time" content="2019-03-04T03:41:04.166Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="date">
-<meta name="twitter:description" content="date.js 处理日期的函数">
+<meta name="twitter:title" content="js-new">
+<meta name="twitter:description" content="js中的new操作符">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zhangyingcai.github.io/2019/01/15/vue-date/">
+  <link rel="canonical" href="https://zhangyingcai.github.io/2019/03/04/js-new/">
 
 
 
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title>date | mumu的个人博客</title>
+  <title>js-new | mumu的个人博客</title>
   
 
 
@@ -408,7 +408,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangyingcai.github.io/2019/01/15/vue-date/">
+    <link itemprop="mainEntityOfPage" href="https://zhangyingcai.github.io/2019/03/04/js-new/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YingCai Zhang">
@@ -425,7 +425,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">date
+          <h1 class="post-title" itemprop="name headline">js-new
               
             
           </h1>
@@ -450,7 +450,7 @@
                 
               
 
-              <time title="创建时间：2019-01-15 16:55:10 / 修改时间：16:57:44" itemprop="dateCreated datePublished" datetime="2019-01-15T16:55:10+08:00">2019-01-15</time>
+              <time title="创建时间：2019-03-04 11:23:51 / 修改时间：11:41:04" itemprop="dateCreated datePublished" datetime="2019-03-04T11:23:51+08:00">2019-03-04</time>
             
 
             
@@ -461,6 +461,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -469,8 +487,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/15/vue-date/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/15/vue-date/" itemprop="commentCount"></span>
+                <a href="/2019/03/04/js-new/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/03/04/js-new/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -498,9 +516,18 @@
       
 
       
-        <p>date.js 处理日期的函数</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">export function formatDate(date, fmt) &#123;</span><br><span class="line">  if (/(y+)/.test(fmt)) &#123;</span><br><span class="line">    fmt = fmt.replace(RegExp.$1, (date.getFullYear() + &apos;&apos;).substr(4 - RegExp.$1.length))</span><br><span class="line">  &#125;</span><br><span class="line">  const o = &#123;</span><br><span class="line">    &apos;M+&apos;: date.getMonth() + 1,</span><br><span class="line">    &apos;d+&apos;: date.getDate(),</span><br><span class="line">    &apos;h+&apos;: date.getHours(),</span><br><span class="line">    &apos;m+&apos;: date.getMinutes(),</span><br><span class="line">    &apos;s+&apos;: date.getSeconds()</span><br><span class="line">  &#125;</span><br><span class="line">  for (const k in o) &#123;</span><br><span class="line">    if (new RegExp(`($&#123;k&#125;)`).test(fmt)) &#123;</span><br><span class="line">      const str = o[k] + &apos;&apos;</span><br><span class="line">      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return fmt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function padLeftZero(str) &#123;</span><br><span class="line">  return (&apos;00&apos; + str).substr(str.length)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 用法</span><br><span class="line">// 可以使用filter</span><br><span class="line">dateFilter(number) &#123;</span><br><span class="line">    // js默认是毫秒，先转换为毫秒</span><br><span class="line">    const date = new Date(number * 1e3)</span><br><span class="line">    return formatDate(date, &apos;yyyy.MM.dd hh:mm:ss&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>js中的new操作符<br><a id="more"></a></p>
+<h1 id="new-的作用"><a href="#new-的作用" class="headerlink" title="new 的作用"></a>new 的作用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 语法</span><br><span class="line">new constructor([arguments]) // new + 构造函数（参数）</span><br><span class="line"></span><br><span class="line">当代码 `new Foo(...)` 执行时，会发生以下事情：</span><br><span class="line"></span><br><span class="line">一个继承自 `Foo.prototype` 的新对象被创建。</span><br><span class="line">使用指定的参数调用构造函数 `Foo` ，并将 `this` 绑定到新创建的对象。`new Foo` 等同于 `new Foo()`，也就是没有指定参数列表，`Foo` 不带任何参数调用的情况。</span><br><span class="line">由构造函数返回的对象就是 `new` 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。（一般情况下，构造函数不返回值，但是用户可以选择主动返回对象，来覆盖正常的对象创建步骤）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function create(Con, ...args)&#123;</span><br><span class="line">    let obj = &#123;&#125;</span><br><span class="line">    Object.setPrototypeOf(obj, Con.prototype)</span><br><span class="line">    let result = Con.apply(obj, args)</span><br><span class="line">    return result instanceof Object ? result : obj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://juejin.im/post/5c7b963ae51d453eb173896e?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">参考</a></p>
+<ul>
+<li>首先函数接受不定量的参数，第一个参数为构造函数，接下来的参数被构造函数使用</li>
+<li>然后内部创建一个空对象 obj</li>
+<li>因为 obj 对象需要访问到构造函数原型链上的属性，所以我们通过 setPrototypeOf 将两者联系起来。这段代码等同于 * obj.<strong>proto</strong> = Con.prototype</li>
+<li>将 obj 绑定到构造函数上，并且传入剩余的参数</li>
+<li>判断构造函数返回值是否为对象，如果为对象就使用构造函数返回的值，否则使用 obj，这样就实现了忽略构造函数返回的原始值</li>
+</ul>
+
       
     </div>
 
@@ -523,7 +550,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/date/" rel="tag"># date</a>
+            <a href="/tags/new/" rel="tag"># new</a>
           
         </div>
       
@@ -536,8 +563,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/15/vue-router/" rel="next" title="vue-router">
-                <i class="fa fa-chevron-left"></i> vue-router
+              <a href="/2019/02/27/wx/" rel="next" title="微信分享">
+                <i class="fa fa-chevron-left"></i> 微信分享
               </a>
             
           </div>
@@ -545,10 +572,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/17/es6/" rel="prev" title="es6">
-                es6 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,8 +619,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -755,6 +787,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#new-的作用"><span class="nav-number">1.</span> <span class="nav-text">new 的作用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
