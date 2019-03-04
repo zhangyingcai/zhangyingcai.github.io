@@ -60,7 +60,7 @@
   <entry>
     <title><![CDATA[项目]]></title>
     <url>%2F2019%2F02%2F21%2Fxm%2F</url>
-    <content type="text"><![CDATA[项目心得以及注意事项 表单：1.字段对应的校验，并且在该字段对应出现的位置要同步校验。]]></content>
+    <content type="text"><![CDATA[项目心得以及注意事项 表单：1.字段对应的校验，并且在该字段对应出现的位置要同步校验。 版本更新由于文件不同引起的功能差异api文档：https://swagger.io/静态书籍：https://easy-mock.com/login 输入内容校验的问题输入内容只用于展示的问题，将内容转义，或者升级通过innerHTML实现]]></content>
       <tags>
         <tag>项目心得</tag>
       </tags>
@@ -125,7 +125,10 @@
   <entry>
     <title><![CDATA[es6]]></title>
     <url>%2F2019%2F01%2F17%2Fes6%2F</url>
-    <content type="text"><![CDATA[es6笔记 变量提升英文：Hoisting 变量提升变量和函数的声明移动到当前执行上下文(块)的最前面。应用范围：数据类型、变量、函数 runtime：1.并不是物理位置的移动，而是在编译阶段被放到内存中。2.仅提升声明，而不提示初始化 历史原因：提升存在的根本原因就是为了解决函数间互相调用的情况 12345678&#123; catName(&quot;Chloe&quot;); function catName(name) &#123; console.log(&quot;我的猫名叫 &quot; + name); &#125;&#125;catName(&quot;Tom&quot;); 1234567function test1() &#123; test2()&#125;function test2() &#123; test1()&#125;test1() let 不存在 Hoistingvar 在全局作用域下声明变量会导致变量挂载在 window 上，let`const`两者不会 tomdn 暂时性死区let、const 因为暂时性死区的原因，不能在声明前使用 在 ECMAScript 6 中，let（const）将不会提升变量到代码块的顶部。因此，在变量声明之前引用这个变量，将抛出引用错误（ReferenceError）。这个变量将从代码块一开始的时候就处在一个“暂时性死区”，直到这个变量被声明为止。 tomdn 原型继承立即执行函数历史原因：用于模块化，通过函数作用域解决命名冲突、污染全局作用域的问题。1(function()&#123;&#125;)()]]></content>
+    <content type="text"><![CDATA[es6笔记 变量提升英文：Hoisting 很有意思的题目 变量提升变量和函数的声明移动到当前执行上下文(块)的最前面。应用范围：数据类型、变量、函数 runtime：1.并不是物理位置的移动，而是在编译阶段被放到内存中。2.仅提升声明，而不提示初始化 历史原因：提升存在的根本原因就是为了解决函数间互相调用的情况 12345678&#123; catName(&quot;Chloe&quot;); function catName(name) &#123; console.log(&quot;我的猫名叫 &quot; + name); &#125;&#125;catName(&quot;Tom&quot;); 1234567function test1() &#123; test2()&#125;function test2() &#123; test1()&#125;test1() let 不存在 Hoistingvar 在全局作用域下声明变量会导致变量挂载在 window 上，let`const`两者不会 tomdn 暂时性死区let、const 因为暂时性死区的原因，不能在声明前使用 在 ECMAScript 6 中，let（const）将不会提升变量到代码块的顶部。因此，在变量声明之前引用这个变量，将抛出引用错误（ReferenceError）。这个变量将从代码块一开始的时候就处在一个“暂时性死区”，直到这个变量被声明为止。 tomdn 原型继承立即执行函数历史原因：用于模块化，通过函数作用域解决命名冲突、污染全局作用域的问题。1(function()&#123;&#125;)()]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
       <tags>
         <tag>es6</tag>
       </tags>
