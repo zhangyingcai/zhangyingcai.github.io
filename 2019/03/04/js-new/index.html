@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="js中的new操作符">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-04T05:40:02.328Z">
+<meta property="og:updated_time" content="2019-03-06T03:32:18.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="new操作符">
 <meta name="twitter:description" content="js中的new操作符">
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">36</span></a>
 
   </li>
         
@@ -299,7 +299,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">13</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">17</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
 
   </li>
 
@@ -450,12 +450,24 @@
                 
               
 
-              <time title="创建时间：2019-03-04 11:23:51 / 修改时间：13:40:02" itemprop="dateCreated datePublished" datetime="2019-03-04T11:23:51+08:00">2019-03-04</time>
+              <time title="创建时间：2019-03-04 11:23:51" itemprop="dateCreated datePublished" datetime="2019-03-04T11:23:51+08:00">2019-03-04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-06 11:32:18" itemprop="dateModified" datetime="2019-03-06T11:32:18+08:00">2019-03-06</time>
               
             
           </span>
@@ -527,6 +539,10 @@
 <li>将 obj 绑定到构造函数上，并且传入剩余的参数</li>
 <li>判断构造函数返回值是否为对象，如果为对象就使用构造函数返回的值，否则使用 obj，这样就实现了忽略构造函数返回的原始值</li>
 </ul>
+<h1 id="Object-setPrototypeOf"><a href="#Object-setPrototypeOf" class="headerlink" title="Object.setPrototypeOf"></a>Object.setPrototypeOf</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置一个对象的原型到另一个对象</span><br></pre></td></tr></table></figure>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>Object.setPrototypeOf(obj, prototype)</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>obj 要设置其原型的对象<br>prototype 该对象的新原型</p>
+<h1 id="获取对象的原型可以使用obj-proto，设置原型链不建议使用该方法"><a href="#获取对象的原型可以使用obj-proto，设置原型链不建议使用该方法" class="headerlink" title="获取对象的原型可以使用obj.proto，设置原型链不建议使用该方法"></a>获取对象的原型可以使用obj.<strong>proto</strong>，设置原型链不建议使用该方法</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf" target="_blank" rel="noopener">mdn参考</a></p>
 
       
     </div>
@@ -572,6 +588,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/05/learn/" rel="prev" title="阅读计划">
+                阅读计划 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -646,7 +666,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -685,7 +705,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -758,7 +786,19 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -817,7 +857,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#new-的作用"><span class="nav-number">1.</span> <span class="nav-text">new 的作用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#new-的作用"><span class="nav-number">1.</span> <span class="nav-text">new 的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-setPrototypeOf"><span class="nav-number">2.</span> <span class="nav-text">Object.setPrototypeOf</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">2.2.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取对象的原型可以使用obj-proto，设置原型链不建议使用该方法"><span class="nav-number">3.</span> <span class="nav-text">获取对象的原型可以使用obj.proto，设置原型链不建议使用该方法</span></a></li></ol></div>
             
 
           </div>

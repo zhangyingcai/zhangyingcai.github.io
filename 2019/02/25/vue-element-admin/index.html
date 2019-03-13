@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="vue-element-admin的使用总结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-25T06:58:32.511Z">
+<meta property="og:updated_time" content="2019-03-13T10:29:07.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-element-admin">
 <meta name="twitter:description" content="vue-element-admin的使用总结">
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">36</span></a>
 
   </li>
         
@@ -299,7 +299,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">13</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">17</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
 
   </li>
 
@@ -450,16 +450,46 @@
                 
               
 
-              <time title="创建时间：2019-02-25 13:41:34 / 修改时间：14:58:32" itemprop="dateCreated datePublished" datetime="2019-02-25T13:41:34+08:00">2019-02-25</time>
+              <time title="创建时间：2019-02-25 13:41:34" itemprop="dateCreated datePublished" datetime="2019-02-25T13:41:34+08:00">2019-02-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-13 18:29:07" itemprop="dateModified" datetime="2019-03-13T18:29:07+08:00">2019-03-13</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -501,7 +531,8 @@
         <p>vue-element-admin的使用总结</p>
 <a id="more"></a>
 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p>基于vue2.0,配合使用 Element UI 组件库的一个前端管理后台集成解决方案.</p>
-<p>优点：<br>1.权限验证方案。通过配置不同的角色展示不同的页面，可以前后端配合用于权限配置。</p>
+<p>优点：<br>1.权限验证方案。通过配置不同的角色展示不同的页面，可以前后端配合用于权限配置。<br>2.和element-ui有配套的组件，基本满足了项目的需求，而且是大团队在维护便于项目开发和问题解决。</p>
+<h1 id="页面布局"><a href="#页面布局" class="headerlink" title="页面布局"></a>页面布局</h1><p>layout作为内容页基础模板，所有的页面跳转都是在这里完成的。<br>包含导航、侧边栏、面包屑以及内容。<br>可以根据自己的需求创建一级模板layout。<br>通过嵌套路由只更新页面appmain和导航栏、侧边栏的数据。<br>点击侧边栏通过重定向<code>redirect: &#39;/site/index&#39;</code>切换到当前路径下的默认页面。<br>侧边栏基于<code>element-ui</code>和<code>el-menu</code>改造</p>
 <h1 id="权限验证"><a href="#权限验证" class="headerlink" title="权限验证"></a>权限验证</h1><p>思路：通过获取当前用户的权限，然后去对比路由表，生成当前用户具有的权限可访问路由表，然后通过router.addRoutes动态挂载到router上。</p>
 
       
@@ -626,7 +657,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -665,7 +696,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -738,7 +777,19 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -797,7 +848,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#权限验证"><span class="nav-number">2.</span> <span class="nav-text">权限验证</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#页面布局"><span class="nav-number">2.</span> <span class="nav-text">页面布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#权限验证"><span class="nav-number">3.</span> <span class="nav-text">权限验证</span></a></li></ol></div>
             
 
           </div>
