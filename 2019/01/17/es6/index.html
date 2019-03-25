@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="es6笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-04T10:34:46.529Z">
+<meta property="og:updated_time" content="2019-03-25T10:33:20.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6">
 <meta name="twitter:description" content="es6笔记">
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">43</span></a>
 
   </li>
 
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-04 18:34:46" itemprop="dateModified" datetime="2019-03-04T18:34:46+08:00">2019-03-04</time>
+                <time title="修改时间：2019-03-25 18:33:20" itemprop="dateModified" datetime="2019-03-25T18:33:20+08:00">2019-03-25</time>
               
             
           </span>
@@ -547,7 +547,18 @@
 </blockquote>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types" target="_blank" rel="noopener">tomdn</a></p>
 <h1 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h1><h1 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h1><p>历史原因：用于模块化，通过函数作用域解决命名冲突、污染全局作用域的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;&#125;)()</span><br></pre></td></tr></table></figure></p>
-
+<h1 id="箭头函数（Arrow-Function）"><a href="#箭头函数（Arrow-Function）" class="headerlink" title="箭头函数（Arrow Function）"></a>箭头函数（Arrow Function）</h1><p>没有自己的this,arguments,super或者new.target这些函数表达式更适用于那些本来需要匿名函数的地方，并且他们不能用作构造函数。<br>箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。</p>
+<h1 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h1><p>它使得将值从数组，或属性从对象，提取到不同的变量中，成为可能<br>为了方便从对象数组中提取需要的值<br>… 剩余运算符</p>
+<p>数组模型的解构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var a, b, rest;</span><br><span class="line">[a, b] = [10, 20];</span><br><span class="line">console.log(a); // 10</span><br><span class="line">console.log(b); // 20</span><br><span class="line"></span><br><span class="line">[a, b, ...rest] = [10, 20, 30, 40, 50];</span><br><span class="line">console.log(a); // 10</span><br><span class="line">console.log(b); // 20</span><br><span class="line">console.log(rest); // [30, 40, 50]</span><br></pre></td></tr></table></figure>
+<p>可忽略<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let [a, ,b] = [1, 2, 3]</span><br><span class="line">// a=1</span><br><span class="line">// b=3</span><br></pre></td></tr></table></figure></p>
+<p>不完全解构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let [a=1, b]=[]; //a=1,b=undefined</span><br></pre></td></tr></table></figure></p>
+<p>字符串等<br>在数组的结构中，结构的目标如果为可遍历对象，皆可进行结构赋值。可遍历对象即实现iterator接口的数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let [a, b, c, d, e] = &apos;hello&apos;</span><br></pre></td></tr></table></figure></p>
+<p>结构默认值<br>当解构模式有匹配结果，且匹配结果是undefined时，会触发默认值作为返回结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let [a=3, b=a] = []</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(&#123; a, b &#125; = &#123; a: 10, b: 20 &#125;);</span><br><span class="line">console.log(a); // 10</span><br><span class="line">console.log(b); // 20</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Stage 4（已完成）提案中的特性</span><br><span class="line">(&#123;a, b, ...rest&#125; = &#123;a: 10, b: 20, c: 30, d: 40&#125;);</span><br><span class="line">console.log(a); // 10</span><br><span class="line">console.log(b); // 20</span><br><span class="line">console.log(rest); // &#123;c: 30, d: 40&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="模板字符串（Template-String）"><a href="#模板字符串（Template-String）" class="headerlink" title="模板字符串（Template String）"></a>模板字符串（Template String）</h1><h1 id="对象字面量扩展语法（Enhanced-Object-Literals）"><a href="#对象字面量扩展语法（Enhanced-Object-Literals）" class="headerlink" title="对象字面量扩展语法（Enhanced Object Literals）"></a>对象字面量扩展语法（Enhanced Object Literals）</h1><h1 id="表达式结构（Destructuring）"><a href="#表达式结构（Destructuring）" class="headerlink" title="表达式结构（Destructuring）"></a>表达式结构（Destructuring）</h1><h1 id="函数参数表达、传参"><a href="#函数参数表达、传参" class="headerlink" title="函数参数表达、传参"></a>函数参数表达、传参</h1><h1 id="新的数据结构"><a href="#新的数据结构" class="headerlink" title="新的数据结构"></a>新的数据结构</h1><h1 id="类语法（Classes）"><a href="#类语法（Classes）" class="headerlink" title="类语法（Classes）"></a>类语法（Classes）</h1><h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><h1 id="代码模块化"><a href="#代码模块化" class="headerlink" title="代码模块化"></a>代码模块化</h1><h1 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h1><p>SE6 引入的一种新的原始数据类型 Symbol ,表示独一无二的值，最大的用法是用来定义对象的唯一属性名。</p>
+<h1 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h1><h1 id="for-of-替换-for…in"><a href="#for-of-替换-for…in" class="headerlink" title="for of 替换 for…in"></a>for of 替换 for…in</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const Zootopia=[</span><br><span class="line">    &#123;name:&apos;Nick&apos;,gender:1,species:&apos;Fox&apos;&#125;,</span><br><span class="line">    &#123;name:&apos;Judy&apos;,gender:0,species:&apos;Bunny&apos;&#125;</span><br><span class="line">];</span><br><span class="line">for(const &#123;name,species&#125; of Zootopia)&#123;</span><br><span class="line">    console.log(`hi,I am $&#123;name&#125;,and I am a $&#123;species&#125;`);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Array-forEach"><a href="#Array-forEach" class="headerlink" title="Array.forEach"></a>Array.forEach</h1>
       
     </div>
 
@@ -670,7 +681,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -861,7 +872,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量提升"><span class="nav-number">1.</span> <span class="nav-text">变量提升</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#暂时性死区"><span class="nav-number">2.</span> <span class="nav-text">暂时性死区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型继承"><span class="nav-number">3.</span> <span class="nav-text">原型继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#立即执行函数"><span class="nav-number">4.</span> <span class="nav-text">立即执行函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量提升"><span class="nav-number">1.</span> <span class="nav-text">变量提升</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#暂时性死区"><span class="nav-number">2.</span> <span class="nav-text">暂时性死区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型继承"><span class="nav-number">3.</span> <span class="nav-text">原型继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#立即执行函数"><span class="nav-number">4.</span> <span class="nav-text">立即执行函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数（Arrow-Function）"><span class="nav-number">5.</span> <span class="nav-text">箭头函数（Arrow Function）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解构赋值"><span class="nav-number">6.</span> <span class="nav-text">解构赋值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模板字符串（Template-String）"><span class="nav-number">7.</span> <span class="nav-text">模板字符串（Template String）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象字面量扩展语法（Enhanced-Object-Literals）"><span class="nav-number">8.</span> <span class="nav-text">对象字面量扩展语法（Enhanced Object Literals）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表达式结构（Destructuring）"><span class="nav-number">9.</span> <span class="nav-text">表达式结构（Destructuring）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数参数表达、传参"><span class="nav-number">10.</span> <span class="nav-text">函数参数表达、传参</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新的数据结构"><span class="nav-number">11.</span> <span class="nav-text">新的数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类语法（Classes）"><span class="nav-number">12.</span> <span class="nav-text">类语法（Classes）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成器"><span class="nav-number">13.</span> <span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Promise"><span class="nav-number">14.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码模块化"><span class="nav-number">15.</span> <span class="nav-text">代码模块化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Symbol"><span class="nav-number">16.</span> <span class="nav-text">Symbol</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Proxy"><span class="nav-number">17.</span> <span class="nav-text">Proxy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-of-替换-for…in"><span class="nav-number">18.</span> <span class="nav-text">for of 替换 for…in</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Array-forEach"><span class="nav-number">19.</span> <span class="nav-text">Array.forEach</span></a></li></ol></div>
             
 
           </div>
