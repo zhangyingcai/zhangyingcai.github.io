@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .radius{
+            width: 100px;
+            height: 200px;
+            background-color: aqua;
+            /* border-top-left-radius: 100px; */
+            /* border-top-right-radius: 100px; */
+            /* border-radius: 100px 50px; */
+            /* border-top-right-radius: 100px 50px; */
+            border-radius: 100px 0 0 100px;
+        }
+    </style>
+    <div class="radius"></div>
+    <style>
+        /* 添加过渡效果 */
+        /* -webkit-,-o- */
+        .circle{
+            background-color: aqua;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: all 0.5s;
+        }
+        /* 缩放1.5倍 */
+        .circle:hover{
+            transform: scale(1.5);
+        }
+    </style>
+    <div class="circle"></div>
+    <style>
+        .nth ul{
+            list-style: none;
+        }
+        .nth li{
+            width: 20px;
+            height: 20px;
+            border: 1px solid #666;
+        }
+        .nth a{
+            display: block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: aquamarine;
+        }
+        /* .nth li:nth-child(n){background-color: black;} */
+        /* .nth li:nth-child(2n){background-color: black;} */
+        /* .nth li:nth-child(2n+1){background-color: black;} */
+        .nth li:nth-child(n+5){background-color: black;}
+    </style>
+    <div class="nth">
+        <ul>
+            <li><a>1</a></li>
+            <li><a>2</a></li>
+            <li><a>3</a></li>
+            <li><a>4</a></li>
+            <li><a>5</a></li>
+            <li><a>6</a></li>
+            <li><a>7</a></li>
+            <li><a>8</a></li>
+            <li><a>9</a></li>
+            <li><a>0</a></li>
+        </ul>
+    </div>
+    <style>
+        .after::after{
+            content: '*';
+            color: red;
+        }
+        .after::before{
+            content: '&';
+            color: #666;
+        }
+    </style>
+    <div class="after"></div>
+    <style>
+        .letter::first-letter{
+            font-size: 35px;
+            color: crimson;
+            font-weight: bold;
+            float: left;
+        }
+        /* 添加float:left首个文字就会下沉 */
+        .letter::first-line{
+            color: #f66
+        }
+        /* 首行 */
+    </style>
+    <div class="demo">
+        <div class="letter">我是一句话额！</div>
+    </div>
+    <!-- 对话框 -->
+    <style>
+        .dialog{
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #f66;
+            border-radius: 6px;
+            position: relative;
+        }
+        .dialog::before{
+            content: '';
+            border-width: 10px;
+            border-color: transparent; 
+            border-style: solid;
+            border-right: 10px solid #f66;
+            position: absolute;
+            top: 15px;
+            left: -20px;
+        }
+        .triangle{
+            width: 0;
+            height: 0px;
+            border-right: 50px solid #f66;
+            border-left: 50px solid transparent;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+        }
+    </style>
+    <div class="triangle"></div>
+    <div class="dialog">我的小姐姐呢</div>
+    <!-- 菱形diamond -->
+    <style>
+        .diamond{
+            width: 200px;
+            height: 200px;
+            -ms-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            background-color: aqua;
+        }
+    </style>
+    <div class="diamond"></div>
+    <!-- 平行四边形parallel -->
+    <style>
+        .parallel{
+            width: 300px;
+            height: 200px;
+            -ms-transform: skewX(45deg);
+            -moz-transform: skewX(45deg);
+            -webkit-transform: skewX(45deg);
+            -o-transform: skewX(45deg);
+            transform: skewX(45deg);
+            background-color: aqua;
+        }
+    </style>
+    <div class="parallel"></div>
+</body>
+</html>

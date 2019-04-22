@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title></title>
-    <url>%2F2019%2F04%2F19%2Fwinter36%2F</url>
+    <url>%2F2019%2F04%2F19%2Fwinter%2Fwinter36%2F</url>
     <content type="text"><![CDATA[Document document.body.addEventListener('mousedown', function(e){ console.log('body'); }, true); // 捕获 document.getElementById('input').addEventListener('mousedown', function(){ console.log('input'); }, true) document.body.addEventListener('mousedown', function(){ console.log('body1'); }, false); // 冒泡 document.getElementById('input').addEventListener('mousedown', function(){ console.log('input1'); }, false)]]></content>
   </entry>
   <entry>
@@ -28,7 +28,7 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2019%2F03%2F22%2Fclearboth%2F</url>
+    <url>%2F2019%2F03%2F22%2Fcss%2Fclearboth%2F</url>
     <content type="text"><![CDATA[清除浮动]]></content>
   </entry>
   <entry>
@@ -202,7 +202,7 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2019%2F02%2F13%2Fcss3%2F</url>
+    <url>%2F2019%2F02%2F13%2Fcss%2Fcss3%2F</url>
     <content type="text"><![CDATA[Document .radius{ width: 100px; height: 200px; background-color: aqua; /* border-top-left-radius: 100px; */ /* border-top-right-radius: 100px; */ /* border-radius: 100px 50px; */ /* border-top-right-radius: 100px 50px; */ border-radius: 100px 0 0 100px; } /* 添加过渡效果 */ /* -webkit-,-o- */ .circle{ background-color: aqua; width: 50px; height: 50px; border-radius: 50%; transition: all 0.5s; } /* 缩放1.5倍 */ .circle:hover{ transform: scale(1.5); } .nth ul{ list-style: none; } .nth li{ width: 20px; height: 20px; border: 1px solid #666; } .nth a{ display: block; width: 20px; height: 20px; text-align: center; border-radius: 50%; background-color: aquamarine; } /* .nth li:nth-child(n){background-color: black;} */ /* .nth li:nth-child(2n){background-color: black;} */ /* .nth li:nth-child(2n+1){background-color: black;} */ .nth li:nth-child(n+5){background-color: black;} 1 2 3 4 5 6 7 8 9 0 .after::after{ content: '*'; color: red; } .after::before{ content: '&'; color: #666; } .letter::first-letter{ font-size: 35px; color: crimson; font-weight: bold; float: left; } /* 添加float:left首个文字就会下沉 */ .letter::first-line{ color: #f66 } /* 首行 */ 我是一句话额！ .dialog{ width: 200px; height: 50px; line-height: 50px; background-color: #f66; border-radius: 6px; position: relative; } .dialog::before{ content: ''; border-width: 10px; border-color: transparent; border-style: solid; border-right: 10px solid #f66; position: absolute; top: 15px; left: -20px; } .triangle{ width: 0; height: 0px; border-right: 50px solid #f66; border-left: 50px solid transparent; border-top: 50px solid transparent; border-bottom: 50px solid transparent; } 我的小姐姐呢 .diamond{ width: 200px; height: 200px; -ms-transform: rotate(45deg); -moz-transform: rotate(45deg); -webkit-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); background-color: aqua; } .parallel{ width: 300px; height: 200px; -ms-transform: skewX(45deg); -moz-transform: skewX(45deg); -webkit-transform: skewX(45deg); -o-transform: skewX(45deg); transform: skewX(45deg); background-color: aqua; }]]></content>
   </entry>
   <entry>
@@ -368,7 +368,7 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2018%2F12%2F11%2Ftest%2F</url>
+    <url>%2F2018%2F12%2F11%2Fcss%2Ftest%2F</url>
     <content type="text"><![CDATA[Document .triangle { height: 0; width: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 100px solid red; } .box { width: 0px; height: 0px; margin: 10px; border-left: 100px solid red; border-right: 100px solid blue; border-top: 100px solid yellow; border-bottom: 100px solid green; }]]></content>
   </entry>
   <entry>
