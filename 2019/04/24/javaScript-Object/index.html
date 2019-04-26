@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="每天一个知识点之Object">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-24T06:34:54.678Z">
+<meta property="og:updated_time" content="2019-04-26T07:32:39.392Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天一个知识点之Object">
 <meta name="twitter:description" content="每天一个知识点之Object">
@@ -450,12 +450,24 @@
                 
               
 
-              <time title="创建时间：2019-04-24 14:33:47 / 修改时间：14:34:54" itemprop="dateCreated datePublished" datetime="2019-04-24T14:33:47+08:00">2019-04-24</time>
+              <time title="创建时间：2019-04-24 14:33:47" itemprop="dateCreated datePublished" datetime="2019-04-24T14:33:47+08:00">2019-04-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 15:32:39" itemprop="dateModified" datetime="2019-04-26T15:32:39+08:00">2019-04-26</time>
               
             
           </span>
@@ -500,6 +512,39 @@
       
         <p>每天一个知识点之Object</p>
 <a id="more"></a>
+<h2 id="Object-assign-target-…sources"><a href="#Object-assign-target-…sources" class="headerlink" title="Object.assign(target, …sources)"></a>Object.assign(target, …sources)</h2><p>参数</p>
+<p>target // 目标对象<br>sources // 源对象</p>
+<p>返回值</p>
+<p>目标对象 target</p>
+<p>特性：</p>
+<ul>
+<li>目标对象和源对象有相同的键，则属性被源对象覆盖。</li>
+<li>只能拷贝只能拷贝源对象中可枚举的属性</li>
+<li>该方法使用源对象的[[Get]]和目标对象的[[Set]]，所以它会调用相关 getter 和 setter。</li>
+<li>String类型和 Symbol 类型的属性都会被拷贝。</li>
+<li>不会跳过那些值为 null 或 undefined 的源对象。</li>
+</ul>
+<p>其他要点</p>
+<ul>
+<li>继承的属性和不可枚举的属性不能拷贝</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const obj = Object.create(&#123;foo: 1&#125;, &#123; // foo 是个继承属性。</span><br><span class="line">    bar: &#123;</span><br><span class="line">        value: 2  // bar 是个不可枚举属性。</span><br><span class="line">    &#125;,</span><br><span class="line">    baz: &#123;</span><br><span class="line">        value: 3,</span><br><span class="line">        enumerable: true  // baz 是个自身可枚举属性。</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">const copy = Object.assign(&#123;&#125;, obj);</span><br><span class="line">console.log(copy); // &#123; baz: 3 &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>拷贝数组</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const foo = Object.assign(&#123;&#125;, [1,2,3]) // &#123;0: 1, 1: 2, 2: 3&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>拷贝字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const foo = Object.assign(&#123;&#125;, &apos;123&apos;) // &#123;0: 1, 1: 2, 2: 3&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>原始类型会被包装，null 和 undefined 会被忽略。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const foo = Object.assign(&#123;&#125;, null) // &#123;&#125;</span><br><span class="line">const foo1 = Object.assign(&#123;&#125;, undefined) // &#123;&#125;</span><br><span class="line">const foo2 = Object.assign(&#123;&#125;, &#123;a:null&#125;) // &#123;a:null&#125;</span><br><span class="line">const foo3 = Object.assign(&#123;&#125;, 10) // &#123;&#125;</span><br><span class="line">const foo4 = Object.assign(&#123;&#125;, true) // &#123;&#125;</span><br><span class="line">const foo5 = Object.assign(&#123;&#125;, Symbol(&apos;foo&apos;)) // &#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>异常会打断后续拷贝</li>
+</ul>
+
       
     </div>
 
@@ -595,8 +640,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -804,6 +858,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-assign-target-…sources"><span class="nav-number">1.</span> <span class="nav-text">Object.assign(target, …sources)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
