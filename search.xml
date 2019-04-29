@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript-super-4]]></title>
+    <url>%2F2019%2F04%2F29%2FJavaScript-super-4%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[每天一个知识点之Number]]></title>
     <url>%2F2019%2F04%2F28%2FjavaScript-Number%2F</url>
     <content type="text"><![CDATA[number 类型的注意点以及 Number 引用类型 Number.toFiexd() 格式化数字, 范围 0-20 位小数，默认四舍五入Number.toExponential() 格式化数字, 返回数字的科学计数法表示的字符串]]></content>
