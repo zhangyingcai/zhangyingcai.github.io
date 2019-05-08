@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="记录学习浏览器的事件机制">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-21T01:28:44.419Z">
+<meta property="og:updated_time" content="2019-05-08T03:57:52.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器的事件注册机制">
 <meta name="twitter:description" content="记录学习浏览器的事件机制">
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">43</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">44</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">55</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">62</span></a>
 
   </li>
 
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-21 09:28:44" itemprop="dateModified" datetime="2019-03-21T09:28:44+08:00">2019-03-21</time>
+                <time title="修改时间：2019-05-08 11:57:52" itemprop="dateModified" datetime="2019-05-08T11:57:52+08:00">2019-05-08</time>
               
             
           </span>
@@ -559,6 +559,7 @@
 <li>JSONP 利用<scrtipt>标签没有跨域限制，通过src属性指向一个地址并提供回调函数来接收数据。<br>缺点： 仅适用于get请求</scrtipt></li>
 <li>CORS 服务端设置<code>Access-Control-Allow-Origin</code>。该属性表示哪些域名可以访问资源，如果设置通配符则表示所有资源都可以访问资源。</li>
 </ul>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">CORS</a><br><a href="https://segmentfault.com/a/1190000012550346?utm_source=tag-newest" target="_blank" rel="noopener">Nginx配置跨域请求 Access-Control-Allow-Origin *</a><br><a href="https://www.cnblogs.com/sunmmi/articles/5956554.html" target="_blank" rel="noopener">nginx通过CORS实现跨域</a></p>
 <p><code>document.domain</code>可以设置一级域名，表示该泛域名下的二级域名都可以访问</p>
 <ul>
 <li>postMessage 用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息。 (ToDo理解)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 发送消息端</span><br><span class="line">window.parent.postMessage(&apos;message&apos;, &apos;http://test.com&apos;)</span><br><span class="line">// 接收消息端</span><br><span class="line">var mc = new MessageChannel()</span><br><span class="line">mc.addEventListener(&apos;message&apos;, event =&gt; &#123;</span><br><span class="line">  var origin = event.origin || event.originalEvent.origin</span><br><span class="line">  if (origin === &apos;http://test.com&apos;) &#123;</span><br><span class="line">    console.log(&apos;验证通过&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -688,7 +689,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -836,7 +837,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">43</span>
+                      
+                    
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
