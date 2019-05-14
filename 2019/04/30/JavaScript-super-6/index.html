@@ -112,17 +112,18 @@
 
 
 
-  <meta name="description" content="银河系首席踩坑官@ 每天进步一点点1.01^365">
+  <meta name="description" content="JavaScript进阶系列-this, call, apply 和 bind 以及箭头函数">
+<meta name="keywords" content="类型转换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript进阶系列-this, call, apply 和 bind 以及箭头函数">
 <meta property="og:url" content="https://github.com/zhangyingcai/zhangyingcai.github.io/2019/04/30/JavaScript-super-6/index.html">
 <meta property="og:site_name" content="mumu的个人博客">
-<meta property="og:description" content="银河系首席踩坑官@ 每天进步一点点1.01^365">
+<meta property="og:description" content="JavaScript进阶系列-this, call, apply 和 bind 以及箭头函数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-30T06:51:47.643Z">
+<meta property="og:updated_time" content="2019-05-14T09:55:15.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript进阶系列-this, call, apply 和 bind 以及箭头函数">
-<meta name="twitter:description" content="银河系首席踩坑官@ 每天进步一点点1.01^365">
+<meta name="twitter:description" content="JavaScript进阶系列-this, call, apply 和 bind 以及箭头函数">
 
 
 
@@ -317,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">62</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">64</span></a>
 
   </li>
 
@@ -449,16 +450,46 @@
                 
               
 
-              <time title="创建时间：2019-04-30 14:50:47 / 修改时间：14:51:47" itemprop="dateCreated datePublished" datetime="2019-04-30T14:50:47+08:00">2019-04-30</time>
+              <time title="创建时间：2019-04-30 14:50:47" itemprop="dateCreated datePublished" datetime="2019-04-30T14:50:47+08:00">2019-04-30</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-14 17:55:15" itemprop="dateModified" datetime="2019-05-14T17:55:15+08:00">2019-05-14</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JavaScript进阶系列/" itemprop="url" rel="index"><span itemprop="name">JavaScript进阶系列</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -497,7 +528,47 @@
       
 
       
-        
+        <p>JavaScript进阶系列-this, call, apply 和 bind 以及箭头函数</p>
+<a id="more"></a>
+<h1 id="this"><a href="#this" class="headerlink" title="this"></a>this</h1><p>当前执行代码的环境对象。</p>
+<blockquote>
+<p>在绝大多数情况下，函数的调用方式决定了<code>this</code>的值。<code>this</code>不能再执行期间被赋值，并且在函数每次函数被调用时<code>this</code>的值可能不会相同。<br><code>ES5</code>引入了<code>bind</code>方法来设置函数的<code>this</code>值，而不用考虑函数如何被调用的<br><code>ES2015</code> 引入了支持<code>this</code>词法解析的<em>箭头函数</em>（它在闭合的执行环境内设置<code>this</code>的值）。</p>
+</blockquote>
+<p>全局环境</p>
+<p>无论是否在严格模式下，在全局执行环境中<code>this</code>指向全局函数。</p>
+<p>在严格模式下，<code>this</code>将保持他执行环境的值。如果<code>this</code>没有被环境定义，那他将保持为undefined。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function f1()&#123;</span><br><span class="line">  return this;</span><br><span class="line">&#125;</span><br><span class="line">f1(); // window</span><br><span class="line"></span><br><span class="line">function f2()&#123;</span><br><span class="line">  &apos;use strict&apos;;</span><br><span class="line">  return this;</span><br><span class="line">&#125;</span><br><span class="line">f2(); // undefined</span><br></pre></td></tr></table></figure>
+<p>因为 f2 是被直接调用的，而不是作为对象的属性或方法调用的。</p>
+<p>如果想把<code>this</code>的值从一个环境传到另一个环境，就需要使用<code>call</code>或者<code>apply</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;a:&apos;custom&apos;&#125;;</span><br><span class="line">var a = &apos;global&apos;;</span><br><span class="line">function whatsThis(arg)&#123;</span><br><span class="line">  return this.a;</span><br><span class="line">&#125;</span><br><span class="line">whatsThis();          // &apos;global&apos;</span><br><span class="line">whatsThis.call(obj);  // &apos;custom&apos;</span><br><span class="line">whatsThis.apply(obj); // &apos;custom&apos;</span><br></pre></td></tr></table></figure>
+<p>当一个函数在其主体中使用 this 关键字时，可以通过使用函数继承自 function.prototype 的 call 或 apply 方法将this 绑定到调用中的特定对象。也就是调用 call 或 apply 方法绑定到调用的对象上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function add(c, d) &#123;</span><br><span class="line">  return this.a + this.b + c + d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var o = &#123;a: 1, b: 3&#125;;</span><br><span class="line"></span><br><span class="line">// 第一个参数是作为 &apos;this&apos; 使用的对象</span><br><span class="line">// 后续参数作为参数传递给函数调用</span><br><span class="line">// call(obj,...arguments)</span><br><span class="line">add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16</span><br><span class="line"></span><br><span class="line">// 第一个参数也是作为 &apos;this&apos; 使用的对象</span><br><span class="line">// 第二个参数是一个数组，数组里的元素用作函数调用中的参数</span><br><span class="line">// apply(obj,[...arguments])</span><br><span class="line">add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34</span><br></pre></td></tr></table></figure></p>
+<p>注：使用 call 和 apply 时，如果传递给 this 的不是一个对象， javascript 会使用相关构造函数将其转换为对象。</p>
+<h1 id="call"><a href="#call" class="headerlink" title="call()"></a>call()</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener">mdn call()</a></p>
+<p>定义：<em>func.apply(thisArg, …args)</em></p>
+<ul>
+<li>thisArg 在 func 函数运行时指定的 this 值。需要注意的是，指定的 this 值并不一定是该函数执行时真正的 this 值，如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动指向全局对象（浏览器中就是window对象），同时值为原始值（number，string，boolean）的 this 会指向该原始值的自动包装对象。strict mode 下是 undefined;</li>
+<li>args 参数列表</li>
+</ul>
+<h1 id="apply"><a href="#apply" class="headerlink" title="apply()"></a>apply()</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="noopener">mdn apply()</a></p>
+<p>定义：<em>func.apply(thisArg, [argsArray])</em></p>
+<ul>
+<li><p>thisArg 在 func 函数运行时指定的 this 值。需要注意的是，指定的 this 值并不一定是该函数执行时真正的 this 值，如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动指向全局对象（浏览器中就是window对象），同时值为原始值（number，string，boolean）的 this 会指向该原始值的自动包装对象。strict mode 下是 undefined;</p>
+</li>
+<li><p>argsArray：一个数组或者类数组对象，其中的数组元素将作为单独的参数传给 fun 函数。如果该参数的值为null 或 undefined，则表示不需要传入任何参数。从ECMAScript 5 开始可以使用类数组对象。</p>
+</li>
+</ul>
+<h1 id="call-和-apply-的区别就是参数不同"><a href="#call-和-apply-的区别就是参数不同" class="headerlink" title="call 和 apply 的区别就是参数不同"></a>call 和 apply 的区别就是参数不同</h1><h1 id="bind"><a href="#bind" class="headerlink" title="bind()"></a>bind()</h1><p>es5 引入了 function.prototype.bind 。调用f.bind(someObject)会创建一个和 f <strong>具有相同函数体和作用域的函数</strong>，但是在这个<em>新函数</em>中， this 被永久性的绑定到了 bind 第一个参数上。</p>
+<p>这个函数可以反复被调用，不过 this 指针已经无法改变。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function f()&#123;</span><br><span class="line">  return this.a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var g = f.bind(&#123;a:&quot;azerty&quot;&#125;);</span><br><span class="line">console.log(g()); // azerty</span><br><span class="line"></span><br><span class="line">var h = g.bind(&#123;a:&apos;yoo&apos;&#125;); // bind只生效一次！</span><br><span class="line">console.log(h()); // azerty</span><br><span class="line"></span><br><span class="line">var o = &#123;a:37, f:f, g:g, h:h&#125;;</span><br><span class="line">console.log(o.f(), o.g(), o.h()); // 37, azerty, azerty</span><br></pre></td></tr></table></figure>
+<p>es6 箭头函数：this 与封闭词法环境中的 this 保持一致。全局代码中是 window 。</p>
+<p>当代码被内联 on-event 函数调用时，this 指向监听器当前所在的 dom 。<br>注意: 只有最外层的 this 是这样设置的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=&quot;alert(this.tagName.toLowerCase());&quot;&gt;</span><br><span class="line">  Show this</span><br><span class="line">&lt;/button&gt;</span><br><span class="line">// dom</span><br><span class="line">&lt;button onclick=&quot;alert((function()&#123;return this&#125;)());&quot;&gt;</span><br><span class="line">  Show inner this</span><br><span class="line">&lt;/button&gt;</span><br><span class="line">// 等同于</span><br><span class="line">alert((function()&#123;return this&#125;)()); // window</span><br><span class="line">alert((function()&#123;&apos;use strict&apos;; return this&#125;)()); // undefined</span><br></pre></td></tr></table></figure></p>
+<h1 id="箭头函数（Arrow-Function）"><a href="#箭头函数（Arrow-Function）" class="headerlink" title="箭头函数（Arrow Function）"></a>箭头函数（Arrow Function）</h1><p>没有自己的this,arguments,super或者new.target这些函数表达式更适用于那些本来需要匿名函数的地方，并且他们不能用作构造函数。<br>箭头函数不会创建自己的 this ,它只会从自己的作用域链的上一层继承this。<br>应用场景： 当我们需要维护一个 this 上下文的时候<br>比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var self = this</span><br></pre></td></tr></table></figure></p>
+<p>不合适的场景：定义函数的方法，且该方法中包含 this<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var Person = &#123;</span><br><span class="line">    &apos;age&apos;: 18,</span><br><span class="line">    &apos;sayHello&apos;: ()=&gt;&#123;</span><br><span class="line">        console.log(this.age);</span><br><span class="line">      &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var age = 20;</span><br><span class="line">Person.sayHello();  // 20</span><br><span class="line">// 此时 this 指向的是全局对象</span><br><span class="line"></span><br><span class="line">// 正常使用</span><br><span class="line">var Person1 = &#123;</span><br><span class="line">    &apos;age&apos;: 18,</span><br><span class="line">    &apos;sayHello&apos;: function () &#123;</span><br><span class="line">        console.log(this.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var age = 20;</span><br><span class="line">Person1.sayHello();   // 18</span><br><span class="line">// 此时的 this 指向 Person1 对象</span><br></pre></td></tr></table></figure></p>
+<p>需要动态 this 的时候<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 错误使用</span><br><span class="line">var button = document.getElementById(&apos;userClick&apos;);</span><br><span class="line">button.addEventListener(&apos;click&apos;, () =&gt; &#123;</span><br><span class="line">     this.classList.toggle(&apos;on&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>button 的监听函数是箭头函数，所以监听函数里面的 this 指向的是定义的时候外层的 this 对象，即 Window，导致无法操作到被点击的按钮对象</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener">参见this详解</a></p>
+<p><a href="https://github.com/Abiel1024/blog/issues/16"> call、apply 和 bind 的原生实现 —— github</a></p>
+
       
     </div>
 
@@ -517,6 +588,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/类型转换/" rel="tag"># 类型转换</a>
+          
+        </div>
       
 
       
@@ -587,8 +664,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -605,7 +691,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -804,6 +890,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">1.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#call"><span class="nav-number">2.</span> <span class="nav-text">call()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#apply"><span class="nav-number">3.</span> <span class="nav-text">apply()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#call-和-apply-的区别就是参数不同"><span class="nav-number">4.</span> <span class="nav-text">call 和 apply 的区别就是参数不同</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bind"><span class="nav-number">5.</span> <span class="nav-text">bind()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数（Arrow-Function）"><span class="nav-number">6.</span> <span class="nav-text">箭头函数（Arrow Function）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
