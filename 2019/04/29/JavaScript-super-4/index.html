@@ -121,7 +121,7 @@
 <meta property="og:description" content="JavaScript进阶系列-类型转换、隐式类型转换">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/2018/12/26/js-base/16716dec14421e47.png">
-<meta property="og:updated_time" content="2019-05-14T10:02:42.225Z">
+<meta property="og:updated_time" content="2019-05-15T01:48:17.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript进阶系列-类型转换、隐式类型转换">
 <meta name="twitter:description" content="JavaScript进阶系列-类型转换、隐式类型转换">
@@ -469,7 +469,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-14 18:02:42" itemprop="dateModified" datetime="2019-05-14T18:02:42+08:00">2019-05-14</time>
+                <time title="修改时间：2019-05-15 09:48:17" itemprop="dateModified" datetime="2019-05-15T09:48:17+08:00">2019-05-15</time>
               
             
           </span>
@@ -686,8 +686,25 @@
 <li>运算符其中一个操作数是字符串的话，会进行连接字符串的操作。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1+&apos;2&apos; // &apos;12&apos;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Boolean(&apos;false&apos;) // true</span><br><span class="line">Boolean(&apos;undefined&apos;) // true</span><br><span class="line">// 这里他们都是字符串</span><br></pre></td></tr></table></figure></p>
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>参考</p>
+<ul>
+<li>false<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Boolean(&apos;false&apos;) // true</span><br><span class="line">Boolean(&apos;undefined&apos;) // true</span><br><span class="line">// 这里他们都是字符串</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>只有在 JavaScript <strong>表达式</strong>或<strong>语句</strong>中需要用到数字或字符串时，对象才被隐式转换。</p>
+<p>当需要将对象转换为数字时，需要三个步骤</p>
+<ul>
+<li>调用 valueOf()。如果结果是原始值（不是一个对象），则将其转换为一个数字。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3*&#123;valueOf:function () &#123; return 5 &#125;&#125; // 15</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>否则，调用 toString() 方法。如果结果是原始值，则将其转换为一个数字。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3*&#123;toString:function () &#123; return 5 &#125;&#125; // 15</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>否则，抛出一个类型错误。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3*&#123;toString:function () &#123; return &#123;&#125; &#125;&#125; //TypeError: Cannot convert object to primitive value</span><br></pre></td></tr></table></figure>
+<p>参考</p>
 <p><a href="http://www.w3school.com.cn/js/pro_js_typeconversion.asp" target="_blank" rel="noopener">ECMAScript 类型转换</a></p>
 <p><a href="https://justjavac.com/javascript/2013/04/08/javascript-quirk-1-implicit-conversion-of-values.html" target="_blank" rel="noopener">JavaScript 的怪癖 1：隐式类型转换</a></p>
 <p>问题：可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用？</p>
