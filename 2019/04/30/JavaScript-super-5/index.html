@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="JavaScript进阶系列- == vs ===, typeof vs instanceof">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-16T02:25:44.488Z">
+<meta property="og:updated_time" content="2019-05-16T03:49:12.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript进阶系列- == vs ===, typeof vs instanceof">
 <meta name="twitter:description" content="JavaScript进阶系列- == vs ===, typeof vs instanceof">
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-16 10:25:44" itemprop="dateModified" datetime="2019-05-16T10:25:44+08:00">2019-05-16</time>
+                <time title="修改时间：2019-05-16 11:49:12" itemprop="dateModified" datetime="2019-05-16T11:49:12+08:00">2019-05-16</time>
               
             
           </span>
@@ -528,7 +528,8 @@
       
 
       
-        <h1 id="JavaScript进阶系列-vs-typeof-vs-instanceof"><a href="#JavaScript进阶系列-vs-typeof-vs-instanceof" class="headerlink" title="JavaScript进阶系列- == vs ===, typeof vs instanceof"></a>JavaScript进阶系列- == vs ===, typeof vs instanceof</h1><a id="more"></a>
+        <p>JavaScript进阶系列- == vs ===, typeof vs instanceof</p>
+<a id="more"></a>
 <h1 id="严格相等"><a href="#严格相等" class="headerlink" title="严格相等 ==="></a>严格相等 ===</h1><p>严格相等进行比较前不会进行隐式转换。</p>
 <p>比较步骤：</p>
 <ul>
@@ -539,7 +540,110 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN === NaN // false</span><br></pre></td></tr></table></figure>
 <h1 id="非严格相等"><a href="#非严格相等" class="headerlink" title="非严格相等 =="></a>非严格相等 ==</h1><p>在比较前进行类型转换成相同类型的，然后进行严格相等校验。</p>
 <p>在类型转换时有些规律</p>
-<p>|:-:|:-:|:-:|:-:|:-:|:-:|:-:|<br>||Undefined|Null|Number|String|Boolean|Object|<br>|Undefined|    true    |true|    false|    false|    false|    IsFalsy(B)|<br>|Null|    true|    true|    false    |false    |false    |IsFalsy(B)|<br>|Number|    false    |false|    A === B|    A === ToNumber(B)    |A=== ToNumber(B)|    A=== ToPrimitive(B) |<br>|String|    false|    false|    ToNumber(A) === B|    A === B|    ToNumber(A) === ToNumber(B)|    ToPrimitive(B) == A|<br>|Boolean|    false    |false    |ToNumber(A) === B|    ToNumber(A) === ToNumber(B)|    A === B|    ToNumber(A) == ToPrimitive(B)|<br>|Object    false|    false    |ToPrimitive(A) == B|    ToPrimitive(A) == B|    ToPrimitive(A) == ToNumber(B)A === B|</p>
+<ul>
+<li>number 和  string 进行比较时会先转换成 number</li>
+<li>number 和  boolean 进行比较时会先转换成 number</li>
+<li>string 和  boolean 进行比较时会先转换成 number</li>
+<li>其中一方是 Object 会先转换成原始值，在进行 == 判断</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">比较值列表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center">Undefined</td>
+<td style="text-align:center">Null</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">Object</td>
+</tr>
+<tr>
+<td style="text-align:center">Undefined</td>
+<td style="text-align:center">true</td>
+<td style="text-align:center">true</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">IsFalsy(B)</td>
+</tr>
+<tr>
+<td style="text-align:center">Null</td>
+<td style="text-align:center">true</td>
+<td style="text-align:center">true</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">IsFalsy(B)</td>
+</tr>
+<tr>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">A === B</td>
+<td style="text-align:center">A === ToNumber(B)</td>
+<td style="text-align:center">A=== ToNumber(B)</td>
+<td style="text-align:center">A=== ToPrimitive(B)</td>
+</tr>
+<tr>
+<td style="text-align:center">String</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">ToNumber(A) === B</td>
+<td style="text-align:center">A === B</td>
+<td style="text-align:center">ToNumber(A) === ToNumber(B)</td>
+<td style="text-align:center">ToPrimitive(B) == A</td>
+</tr>
+<tr>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">ToNumber(A) === B</td>
+<td style="text-align:center">ToNumber(A) === ToNumber(B)</td>
+<td style="text-align:center">A === B</td>
+<td style="text-align:center">ToNumber(A) == ToPrimitive(B)</td>
+</tr>
+<tr>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">ToPrimitive(A) == B</td>
+<td style="text-align:center">ToPrimitive(A) == B</td>
+<td style="text-align:center">ToPrimitive(A) == ToNumber(B)</td>
+<td style="text-align:center">A === B</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>ToNumber(A) 尝试在比较前将参数 A 转换为数字，这与 +A（单目运算符+）的效果相同。</li>
+<li>ToPrimitive(A)通过尝试调用 A 的A.toString() 和 A.valueOf() 方法，将参数 A 转换为原始值（Primitive）。</li>
+</ul>
+<h1 id="typeof-vs-instanceof"><a href="#typeof-vs-instanceof" class="headerlink" title="typeof vs instanceof"></a>typeof vs instanceof</h1><h2 id="typeof-判断原始类型的类型"><a href="#typeof-判断原始类型的类型" class="headerlink" title="typeof 判断原始类型的类型"></a>typeof 判断原始类型的类型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">// Numbers</span><br><span class="line">typeof 1 === &apos;number&apos;;</span><br><span class="line">typeof 3.14 === &apos;number&apos;;</span><br><span class="line">typeof Math.LN2 === &apos;number&apos;;</span><br><span class="line">typeof Infinity === &apos;number&apos;;</span><br><span class="line">typeof NaN === &apos;number&apos;; // 尽管NaN是&quot;Not-A-Number&quot;的缩写,意思是&quot;不是一个数字&quot;</span><br><span class="line">typeof Number(1) === &apos;number&apos;; // 不要这样使用!</span><br><span class="line"></span><br><span class="line">// Strings</span><br><span class="line">typeof &quot;&quot; === &apos;string&apos;;</span><br><span class="line">typeof &quot;bla&quot; === &apos;string&apos;;</span><br><span class="line">typeof (typeof 1) === &apos;string&apos;; // typeof返回的肯定是一个字符串</span><br><span class="line">typeof String(&quot;abc&quot;) === &apos;string&apos;; // 不要这样使用!</span><br><span class="line"></span><br><span class="line">// Booleans</span><br><span class="line">typeof true === &apos;boolean&apos;;</span><br><span class="line">typeof false === &apos;boolean&apos;;</span><br><span class="line">typeof Boolean(true) === &apos;boolean&apos;; // 不要这样使用!</span><br><span class="line"></span><br><span class="line">// Symbols</span><br><span class="line">typeof Symbol() === &apos;symbol&apos;;</span><br><span class="line">typeof Symbol(&apos;foo&apos;) === &apos;symbol&apos;;</span><br><span class="line">typeof Symbol.iterator === &apos;symbol&apos;;</span><br><span class="line"></span><br><span class="line">// Undefined</span><br><span class="line">typeof undefined === &apos;undefined&apos;;</span><br><span class="line">typeof blabla === &apos;undefined&apos;; // 一个未定义的变量,或者一个定义了却未赋初值的变量</span><br><span class="line"></span><br><span class="line">// Objects</span><br><span class="line">typeof &#123;a:1&#125; === &apos;object&apos;;</span><br><span class="line"></span><br><span class="line">// 使用Array.isArray或者Object.prototype.toString.call方法可以从基本的对象中区分出数组类型</span><br><span class="line">typeof [1, 2, 3] === &apos;object&apos;;</span><br><span class="line"></span><br><span class="line">typeof new Date() === &apos;object&apos;;</span><br><span class="line"></span><br><span class="line">// 下面的容易令人迷惑，不要这样使用！</span><br><span class="line">typeof new Boolean(true) === &apos;object&apos;;</span><br><span class="line">typeof new Number(1) ==== &apos;object&apos;;</span><br><span class="line">typeof new String(&quot;abc&quot;) === &apos;object&apos;;</span><br><span class="line"></span><br><span class="line">// 函数</span><br><span class="line">typeof function()&#123;&#125; === &apos;function&apos;;</span><br><span class="line">typeof Math.sin === &apos;function&apos;;</span><br></pre></td></tr></table></figure>
+<p>typeof 对于 null date array object RegExp 返回值都是 object 在做类型比较的时候不是很精确。</p>
+<h2 id="instanceof-判断对象的类型"><a href="#instanceof-判断对象的类型" class="headerlink" title="instanceof 判断对象的类型"></a>instanceof 判断对象的类型</h2><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typeof operand</span><br><span class="line">operand:对象或者原始值</span><br><span class="line"></span><br><span class="line">instanceof运算符用于测试构造函数的prototype属性是否出现在对象的原型链中的任何位置</span><br><span class="line">object instanceof constructor</span><br><span class="line">object: 要检测的对象  // 必须是对象呢</span><br><span class="line">constructor: 某个构造函数</span><br></pre></td></tr></table></figure></p>
+<p>instanceof 典型的用法是判断是否继承关系，用于测试对象是不是特定构造函数的实例。</p>
+<p>实现instanceof<br>要点：</p>
+<ul>
+<li>obj 是null 或者不是对象的时候返回 false</li>
+<li>每个实例对象都有一个私有属性( <strong>proto</strong> )指向它的原型对象Prototype</li>
+<li>该原型对象也有一个自己的原型对象( <strong>proto</strong> ) ，层层向上直到一个对象的原型对象为 null。根据定义，null 没有原型，并作为这个原型链中的最后一个环节。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function myinstanceof(obj, constructor)&#123;</span><br><span class="line">  if(obj === null || typeof obj !== &apos;Object&apos;)&#123; // 去除Null和不是对象的情况</span><br><span class="line">    return false</span><br><span class="line">  &#125;</span><br><span class="line">  // 获得构造函数的原型对象</span><br><span class="line">  const prototype = constructor.prototype</span><br><span class="line">  // 获取对象的原型</span><br><span class="line">  let _proto = obj.__proto__ // 推荐使用 Object.getPrototypeOf(object)</span><br><span class="line">  while(true)&#123;</span><br><span class="line">    if(_proto === null)&#123; // 最后一个环节</span><br><span class="line">      return false</span><br><span class="line">    &#125;</span><br><span class="line">    if(_proto === prototype)&#123;</span><br><span class="line">      return true</span><br><span class="line">    &#125;</span><br><span class="line">    _proto = obj.__proto__</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参考：<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank" rel="noopener">mdn原型链</a><br><a href="https://juejin.im/post/5b0b9b9051882515773ae714" target="_blank" rel="noopener">浅谈 instanceof 和 typeof 的实现原理</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof" target="_blank" rel="noopener">mdn instanceof</a></p>
+<p>问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var y = 1, x = y = typeof x;</span><br><span class="line">x;</span><br></pre></td></tr></table></figure></p>
+<p>表达式是从右往左的，x由于变量提升，类型是undefined，所以x=y=”undefined”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function f(f)&#123;</span><br><span class="line">  return typeof f();//&quot;number&quot;</span><br><span class="line">&#125;)(function()&#123; return 1; &#125;);</span><br></pre></td></tr></table></figure>
+<p>传入的参数为 f 是function(){ return 1; }这个函数。通过f()执行后，得到结果1，所以typeof 1返回”number”。这道题很简单，主要是区分f和f()。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line">var foo = &#123;</span><br><span class="line">    bar: function() &#123; console.log(this);return this.baz; &#125;,</span><br><span class="line">    baz: 1</span><br><span class="line">  &#125;;</span><br><span class="line">  (function()&#123;</span><br><span class="line">    return typeof arguments[0]();//&quot;undefined&quot; function() &#123; return window.baz; &#125;</span><br><span class="line">  &#125;)(foo.bar); // function() &#123; return this.baz; &#125;</span><br></pre></td></tr></table></figure>
+<p>this 当前执行代码的环境对象，这里的执行环境是自执行函数，他的 this 指向 Arguments。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var foo = &#123;</span><br><span class="line">    bar: function()&#123; console.log(this);return this.baz; &#125;,</span><br><span class="line">    baz: 1</span><br><span class="line">  &#125;</span><br><span class="line">  typeof (f = foo.bar)();//undefined</span><br></pre></td></tr></table></figure>
+<p>这里的执行环境是自执行函数，他的 this 指向 window</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var f = (function f()&#123; return &quot;1&quot;; &#125;, function g()&#123; return 2; &#125;)();</span><br><span class="line">typeof f;//&quot;number&quot;</span><br></pre></td></tr></table></figure>
+<p>自执行函数和 <strong>分组选择符</strong> 的使用, 分组选择符通过 , 隔开取最后一个值</p>
 
       
     </div>
@@ -874,7 +978,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript进阶系列-vs-typeof-vs-instanceof"><span class="nav-number">1.</span> <span class="nav-text">JavaScript进阶系列- == vs ===, typeof vs instanceof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#严格相等"><span class="nav-number">2.</span> <span class="nav-text">严格相等 ===</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非严格相等"><span class="nav-number">3.</span> <span class="nav-text">非严格相等 ==</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#严格相等"><span class="nav-number">1.</span> <span class="nav-text">严格相等 ===</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非严格相等"><span class="nav-number">2.</span> <span class="nav-text">非严格相等 ==</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typeof-vs-instanceof"><span class="nav-number">3.</span> <span class="nav-text">typeof vs instanceof</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof-判断原始类型的类型"><span class="nav-number">3.1.</span> <span class="nav-text">typeof 判断原始类型的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#instanceof-判断对象的类型"><span class="nav-number">3.2.</span> <span class="nav-text">instanceof 判断对象的类型</span></a></li></ol></li></ol></div>
             
 
           </div>
