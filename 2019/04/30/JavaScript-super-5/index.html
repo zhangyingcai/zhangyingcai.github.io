@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="JavaScript进阶系列- == vs ===, typeof vs instanceof">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-16T03:49:12.629Z">
+<meta property="og:updated_time" content="2019-05-21T01:45:36.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript进阶系列- == vs ===, typeof vs instanceof">
 <meta name="twitter:description" content="JavaScript进阶系列- == vs ===, typeof vs instanceof">
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">64</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">58</span></a>
 
   </li>
 
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-16 11:49:12" itemprop="dateModified" datetime="2019-05-16T11:49:12+08:00">2019-05-16</time>
+                <time title="修改时间：2019-05-21 09:45:36" itemprop="dateModified" datetime="2019-05-21T09:45:36+08:00">2019-05-21</time>
               
             
           </span>
@@ -544,8 +544,17 @@
 <li>number 和  string 进行比较时会先转换成 number</li>
 <li>number 和  boolean 进行比较时会先转换成 number</li>
 <li>string 和  boolean 进行比较时会先转换成 number</li>
-<li>其中一方是 Object 会先转换成原始值，在进行 == 判断</li>
+<li>其中一方是 Object 会先转换成原始值，在进行 == 判断。</li>
 </ul>
+<p>整体的判断流程就是</p>
+<ul>
+<li>类型是否相同，相同的话判断值是否相同。</li>
+<li>其中一方是 null 或者 undefined , null 和 undefined 只和自己相等。</li>
+<li>其中一方是 boolean ，将 boolean 转换成 number 。</li>
+<li>其中一方是 Object 将根据另外一个的类型转换成对应的类型。</li>
+</ul>
+<p>[] == ![] 现在应该能正确判断了吧</p>
+<p>首先是右边是个表达式，由前两节可知道 [] 转换成 boolean 为 true ,非运算之后就是 false, 此时的左边是 object 右边是 boolean ,执行第三步右边为 0， 然后将 object 转换成数字， [] 转换成数字是 0， 所以 0===0。</p>
 <table>
 <thead>
 <tr>
@@ -767,7 +776,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
