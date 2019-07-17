@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="JavaScript进阶系列 - 变量提升 每次技术更新都是为了解决历史问题。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-24T09:21:43.082Z">
+<meta property="og:updated_time" content="2019-07-11T07:39:48.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变量提升">
 <meta name="twitter:description" content="JavaScript进阶系列 - 变量提升 每次技术更新都是为了解决历史问题。">
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">46</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">56</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">60</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">73</span></a>
 
   </li>
 
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-24 17:21:43" itemprop="dateModified" datetime="2019-05-24T17:21:43+08:00">2019-05-24</time>
+                <time title="修改时间：2019-07-11 15:39:48" itemprop="dateModified" datetime="2019-07-11T15:39:48+08:00">2019-07-11</time>
               
             
           </span>
@@ -531,7 +531,41 @@
         <p>JavaScript进阶系列 - 变量提升</p>
 <p>每次技术更新都是为了解决历史问题。</p>
 <a id="more"></a>
-<h1 id="变量的作用域与变量提升"><a href="#变量的作用域与变量提升" class="headerlink" title="变量的作用域与变量提升"></a>变量的作用域与变量提升</h1>
+<h1 id="变量的作用域与变量提升"><a href="#变量的作用域与变量提升" class="headerlink" title="变量的作用域与变量提升"></a>变量的作用域与变量提升</h1><p>在 ES6 之前，JavaScript 中只存在着函数作用域。<br>ES6 之后引入 let const 两个变量声明关键字 和 块级作用域。</p>
+<blockquote>
+<p>ES5 之前 if switch for 语句是不会产生作用域的，能够产生作用域的有 <strong>函数</strong> ，ES6 之后可以<br>作用域（Scope）即代码执行过程中的变量、函数或者对象的可访问区域，作用域决定了变量或者其他资源的可见性<br>JavaScript 中的作用域主要分为<strong>全局作用域</strong>（Global Scope）与<strong>局部作用域</strong>（Local Scope）两大类，在 ES5 中定义在函数内的变量即是属于某个局部作用域，而定义在函数外的变量即是属于全局作用域</p>
+</blockquote>
+<p>在 JavaScript 中，所有绑定的声明在控制流到达他们出现的作用域时被初始化。这里的作用域就是 执行上下文(Execution Context)<br>每个执行上下文分为 内存分配（Memory Creation Phase）与 执行（Execution）这两个阶段</p>
+<h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><blockquote>
+<p>函数声明和变量声明总是被 JavaScript 解释器隐式地提升 (hoist) 到包含他们的作用域的最顶端。很明显的，语言自身定义和函数形参已经处于作用域顶端, 并被赋值为 undefined。</p>
+</blockquote>
+<p>下面两段代码等价<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  if (false) &#123;</span><br><span class="line">      var x = 1;</span><br><span class="line">  &#125;</span><br><span class="line">  return;</span><br><span class="line">  var y = 1;</span><br><span class="line">&#125;</span><br><span class="line">function foo() &#123;</span><br><span class="line">  var x, y;</span><br><span class="line">  if (false) &#123;</span><br><span class="line">      x = 1;</span><br><span class="line">  &#125;</span><br><span class="line">  return;</span><br><span class="line">  y = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到 不管会不会被执行 JavaScript 引擎都会将 var 修饰的变量声明找出来放到作用域的顶部，但是不会提升 <strong>赋值</strong> 语句</p>
+<h2 id="函数提升"><a href="#函数提升" class="headerlink" title="函数提升"></a>函数提升</h2><p><strong>函数声明</strong>(要理解函数声明和函数表达式)中， 整个函数体都会提升到作用域的顶部。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    foo(); <span class="comment">// TypeError "foo is not a function"</span></span><br><span class="line">    bar(); <span class="comment">// "this will run!"</span></span><br><span class="line">    <span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 函数表达式被赋值给变量'foo'</span></span><br><span class="line">        alert(<span class="string">"this won't run!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 名为'bar'的函数声明</span></span><br><span class="line">        alert(<span class="string">"this will run!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<p>下面打印什么？ ToDo why?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foo(); // TypeError</span><br><span class="line">if (true)&#123;</span><br><span class="line">  function foo() &#123;console.log(&apos;a&apos;)&#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  function foo() &#123;console.log(&apos;b&apos;)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>在 JavaScript 中，一个作用域中的名称有以下四种：</p>
+<ul>
+<li><p>语言自身定义(Language-defined): 所有的作用域默认都会包含this和arguments。</p>
+</li>
+<li><p>函数形参(Formal parameters): 函数有名字的形参会进入到函数体的作用域中。</p>
+</li>
+<li><p>函数声明(Function decalrations): 通过function foo() {}的形式。</p>
+</li>
+<li><p>变量声明(Variable declarations): 通过var foo;的形式。</p>
+</li>
+</ul>
+<p>需要记住的最最重要的特例就是<strong>名称解析顺序</strong>(name resolution order)。<br>记住一个名称进入一个作用域一共有四种方式。<br>我上面列出的顺序就是他们解析的顺序。总的来说，如果一个名称已经被定义了，他绝不会被另一个拥有不用属性的同名名称覆盖。这就意味着，函数声明比变量声明具有更高的优先级。但是这却不意味着对这个名称的赋值无效，仅仅是声明的部分会被忽略而已。但是有下面几个例外：</p>
+<p>内置的名称 arguments 的行为有些怪异。他似乎是在形参之后，函数声明之前被声明。这就意味着名为 arguments 的形参会比内置的 arguments 具有更高的优先级，即使这个形参是undefined 。这是一个不好的特性，不要使用 arguments 作为形参。<br>任何地方试图使用this作为一个标识都会引起语法错误，这是一个好的特性。<br>如果有多个同名形参，那位于列表最后的形参拥有最高的优先级，即使它是 undefined 。</p>
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><p>打印结果题目</p>
+<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;var a = b =1;&#125;)()</span><br><span class="line">console.log(typeof)</span><br></pre></td></tr></table></figure>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var foo = 1;</span><br><span class="line">function bar() &#123;</span><br><span class="line">    if (!foo) &#123;</span><br><span class="line">      var foo = 10;</span><br><span class="line">    &#125;</span><br><span class="line">    alert(foo);</span><br><span class="line">&#125;</span><br><span class="line">bar(); // alert(10)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let foo = 1;</span><br><span class="line">function bar() &#123;</span><br><span class="line">    if (!foo) &#123;</span><br><span class="line">      let foo = 10;</span><br><span class="line">    &#125;</span><br><span class="line">    alert(foo);</span><br><span class="line">&#125;</span><br><span class="line">bar(); // alert(1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const foo = 1;</span><br><span class="line">function bar() &#123;</span><br><span class="line">    if (!foo) &#123;</span><br><span class="line">      const foo = 10;</span><br><span class="line">    &#125;</span><br><span class="line">    alert(foo);</span><br><span class="line">&#125;</span><br><span class="line">bar(); // alert(1)</span><br></pre></td></tr></table></figure>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">function b() &#123;</span><br><span class="line">    a = 10;</span><br><span class="line">    return;</span><br><span class="line">    function a() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">b();</span><br><span class="line">alert(a); // alert(1)</span><br></pre></td></tr></table></figure>
+<p>怎么解决？ 创建临时作用域</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">    var x = 1;</span><br><span class="line">    if (x) &#123;</span><br><span class="line">        (function () &#123;</span><br><span class="line">            var x = 2;</span><br><span class="line">            // some other code</span><br><span class="line">        &#125;());</span><br><span class="line">    &#125;</span><br><span class="line">    // x is still 1.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -576,6 +610,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/30931.html" rel="prev" title="原型继承与原型链">
+                原型继承与原型链 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -650,7 +688,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -804,7 +842,27 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -863,7 +921,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量的作用域与变量提升"><span class="nav-number">1.</span> <span class="nav-text">变量的作用域与变量提升</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量的作用域与变量提升"><span class="nav-number">1.</span> <span class="nav-text">变量的作用域与变量提升</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量提升"><span class="nav-number">1.1.</span> <span class="nav-text">变量提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数提升"><span class="nav-number">1.2.</span> <span class="nav-text">函数提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">1.3.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面试题"><span class="nav-number">2.</span> <span class="nav-text">面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">2.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">2.2.</span> <span class="nav-text">2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">2.3.</span> <span class="nav-text">3</span></a></li></ol></li></ol></div>
             
 
           </div>

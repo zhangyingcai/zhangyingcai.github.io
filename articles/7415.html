@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="JavaScript进阶系列 - 闭包">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-24T09:21:43.082Z">
+<meta property="og:updated_time" content="2019-07-11T03:19:50.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="闭包">
 <meta name="twitter:description" content="JavaScript进阶系列 - 闭包">
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">46</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">56</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">60</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">73</span></a>
 
   </li>
 
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-24 17:21:43" itemprop="dateModified" datetime="2019-05-24T17:21:43+08:00">2019-05-24</time>
+                <time title="修改时间：2019-07-11 11:19:50" itemprop="dateModified" datetime="2019-07-11T11:19:50+08:00">2019-07-11</time>
               
             
           </span>
@@ -538,6 +538,8 @@
 <p>它就是指在函数嵌套中，变量解析的一种规则，根据变量在代码中声明的位置，嵌套的函数在查找变量时，如果自己没有声明，那么可以访问外部的变量。</p>
 <p>上面两个例子还涉及到 this 的问题。</p>
 <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>定义：函数 A 有一个函数 B ，函数 B 引用了函数 A 的变量， 函数 B 就叫做闭包。</p>
+<h3 id="闭包的使用场景"><a href="#闭包的使用场景" class="headerlink" title="闭包的使用场景"></a>闭包的使用场景</h3><p>设计私有的方法和变量，将变量和方法保存在内存当中作为私有变量进行调用。</p>
+<h3 id="闭包的缺陷"><a href="#闭包的缺陷" class="headerlink" title="闭包的缺陷"></a>闭包的缺陷</h3><p>缺点就是常驻内存会增大内存使用量，对页面的影响就是影响性能，使用不当还会造成内存泄漏。<br>闭包的处理性能也相对较弱。</p>
 <h3 id="闭包常用来构成偏函数和柯里化。"><a href="#闭包常用来构成偏函数和柯里化。" class="headerlink" title="闭包常用来构成偏函数和柯里化。"></a>闭包常用来构成偏函数和柯里化。</h3><p>下面是偏函数的示例，柯里化和偏函数稍微有些区别，放到单独一个模块来说。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function makeAdder(x) &#123;</span><br><span class="line">  return function(y) &#123;</span><br><span class="line">    return x + y;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var add5 = makeAdder(5);</span><br><span class="line">var add10 = makeAdder(10);</span><br><span class="line"></span><br><span class="line">console.log(add5(2));  // 7</span><br><span class="line">console.log(add10(2)); // 12</span><br></pre></td></tr></table></figure>
 <h3 id="解决循环中创建闭包的问题"><a href="#解决循环中创建闭包的问题" class="headerlink" title="解决循环中创建闭包的问题"></a>解决循环中创建闭包的问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">  setTimeout(function timer() &#123;</span><br><span class="line">    console.log(i)</span><br><span class="line">  &#125;, i * 1000)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -555,6 +557,15 @@
 <p>应该这样做</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Persion(name,age)&#123;</span><br><span class="line">    this.name = name.toString();</span><br><span class="line">    this.age = Number(age) || 0;</span><br><span class="line">&#125;</span><br><span class="line">Persion.prototype.getName = function()&#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;;</span><br><span class="line">Persion.prototype.getAge = function()&#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>现在统一将 callback 函数换成了 promise 。</p>
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>闭包和变量提升</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;var a = b =1;&#125;)()</span><br><span class="line">console.log(a,b)</span><br></pre></td></tr></table></figure>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const arr = [10,12,11,21];</span><br><span class="line">for (var i=0; i&lt;arr.length; i++) &#123;</span><br><span class="line">  setTimeout(function()&#123;</span><br><span class="line">    console.log(i, arr[i])</span><br><span class="line">  &#125;, 300)</span><br><span class="line">&#125;</span><br><span class="line">// 4个相同的 4 undefined</span><br></pre></td></tr></table></figure>
+<p>如何解决</p>
+<p>ES5</p>
+<h3 id="1-1"><a href="#1-1" class="headerlink" title="1"></a>1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const arr = [10,12,11,21];</span><br><span class="line">for (var i=0; i&lt;arr.length; i++) &#123;</span><br><span class="line">  (function(j)&#123;</span><br><span class="line">    setTimeout(function()&#123;</span><br><span class="line">        console.log(j, arr[j])</span><br><span class="line">    &#125;, 300)</span><br><span class="line">  &#125;)(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1"><a href="#2-1" class="headerlink" title="2"></a>2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const arr = [10,12,11,21];</span><br><span class="line">for (var i=0; i&lt;arr.length; i++) &#123;</span><br><span class="line">    setTimeout(function(j)&#123;</span><br><span class="line">        console.log(j, arr[j])</span><br><span class="line">    &#125;, 300, i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ES6</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const arr = [10,12,11,21];</span><br><span class="line">for (let i=0; i&lt;arr.length; i++) &#123;</span><br><span class="line">  setTimeout(function()&#123;</span><br><span class="line">    console.log(i, arr[i])</span><br><span class="line">  &#125;, 300)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -678,7 +689,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -832,7 +843,27 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -891,7 +922,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包-Closures"><span class="nav-number">1.</span> <span class="nav-text">闭包(Closures)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域-lexical-scoping"><span class="nav-number">1.1.</span> <span class="nav-text">词法作用域 (lexical scoping)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.2.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包常用来构成偏函数和柯里化。"><span class="nav-number">1.2.1.</span> <span class="nav-text">闭包常用来构成偏函数和柯里化。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决循环中创建闭包的问题"><span class="nav-number">1.2.2.</span> <span class="nav-text">解决循环中创建闭包的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能"><span class="nav-number">1.2.3.</span> <span class="nav-text">性能</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包-Closures"><span class="nav-number">1.</span> <span class="nav-text">闭包(Closures)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域-lexical-scoping"><span class="nav-number">1.1.</span> <span class="nav-text">词法作用域 (lexical scoping)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.2.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的使用场景"><span class="nav-number">1.2.1.</span> <span class="nav-text">闭包的使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的缺陷"><span class="nav-number">1.2.2.</span> <span class="nav-text">闭包的缺陷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包常用来构成偏函数和柯里化。"><span class="nav-number">1.2.3.</span> <span class="nav-text">闭包常用来构成偏函数和柯里化。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决循环中创建闭包的问题"><span class="nav-number">1.2.4.</span> <span class="nav-text">解决循环中创建闭包的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能"><span class="nav-number">1.2.5.</span> <span class="nav-text">性能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面试题"><span class="nav-number">2.</span> <span class="nav-text">面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">2.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">2.2.</span> <span class="nav-text">2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">2</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

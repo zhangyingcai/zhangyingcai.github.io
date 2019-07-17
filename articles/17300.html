@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="学习一下js的继承实现。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-24T09:21:43.124Z">
+<meta property="og:updated_time" content="2019-06-03T00:59:10.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js中一般怎么实现继承">
 <meta name="twitter:description" content="学习一下js的继承实现。">
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">46</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">56</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">60</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">73</span></a>
 
   </li>
 
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-24 17:21:43" itemprop="dateModified" datetime="2019-05-24T17:21:43+08:00">2019-05-24</time>
+                <time title="修改时间：2019-06-03 08:59:10" itemprop="dateModified" datetime="2019-06-03T08:59:10+08:00">2019-06-03</time>
               
             
           </span>
@@ -511,7 +511,7 @@
 
       
         <p>学习一下js的继承实现。<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function Animal(name)&#123;</span><br><span class="line">    // 属性</span><br><span class="line">    this.name = name || &apos;Animal&apos;;</span><br><span class="line">    // 实例方法</span><br><span class="line">    this.sleep = function()&#123;</span><br><span class="line">        console.log(this.name + &quot; 正在睡觉。&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    // 原型方法</span><br><span class="line">    Animal.prototype.eat = function(food)&#123;</span><br><span class="line">    console.log(this.name + &quot; 正在吃 &quot;+food);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 子类</span><br><span class="line">function Tiger()&#123;&#125;</span><br><span class="line">Tiger.prototype = new Animal();</span><br><span class="line">Tiger.prototype.name = &quot;Tiger&quot;;</span><br><span class="line"></span><br><span class="line">var tiger = new Tiger();</span><br><span class="line">console.log(tiger.name);</span><br><span class="line">console.log(tiger.eat(&apos;sleep&apos;));</span><br><span class="line">console.log(tiger.sleep());</span><br><span class="line">console.log(tiger instanceof Animal); //true </span><br><span class="line">console.log(tiger instanceof Tiger); //true</span><br></pre></td></tr></table></figure>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function Animal(name)&#123;</span><br><span class="line">    // 属性</span><br><span class="line">    this.name = name || &apos;Animal&apos;;</span><br><span class="line">    // 实例方法</span><br><span class="line">    this.sleep = function()&#123;</span><br><span class="line">        console.log(this.name + &quot; 正在睡觉。&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    // 原型方法</span><br><span class="line">    Animal.prototype.eat = function(food)&#123;</span><br><span class="line">    console.log(this.name + &quot; 正在吃 &quot;+food);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 子类</span><br><span class="line">function Tiger()&#123;&#125;</span><br><span class="line">Tiger.prototype = new Animal();</span><br><span class="line">Tiger.prototype.name = &quot;Tiger&quot;;</span><br><span class="line"></span><br><span class="line">var tiger = new Tiger();</span><br><span class="line">console.log(tiger.name);</span><br><span class="line">console.log(tiger.eat(&apos;sleep&apos;));</span><br><span class="line">console.log(tiger.sleep());</span><br><span class="line">console.log(tiger instanceof Animal); //true </span><br><span class="line">console.log(tiger instanceof Tiger); //true</span><br></pre></td></tr></table></figure>
 <p><a href="/images/微信截图_20181211092617.png">效果</a><br><a href="/images/微信截图_20190315115732.png">原型链</a></p>
 <p>##特点</p>
 <ol>
@@ -528,6 +528,8 @@
 </ol>
 <p>TODO：写这个的时候还是有点蒙。</p>
 <h1 id="组合继承同上"><a href="#组合继承同上" class="headerlink" title="组合继承同上"></a>组合继承同上</h1><h1 id="Object-create实现继承"><a href="#Object-create实现继承" class="headerlink" title="Object.create实现继承"></a>Object.create实现继承</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function parent(val)&#123;</span><br><span class="line">    this.x = val;</span><br><span class="line">&#125;</span><br><span class="line">function child(val)&#123;</span><br><span class="line">    parent.call(this,val);</span><br><span class="line">    this.y = val;</span><br><span class="line">&#125;</span><br><span class="line">child.prototype = Object.create(parent.prototype);</span><br><span class="line">child.prototype.constructor = child;</span><br><span class="line"></span><br><span class="line">const child = new child(1);</span><br></pre></td></tr></table></figure>
+<h1 id="Class-继承"><a href="#Class-继承" class="headerlink" title="Class 继承"></a>Class 继承</h1><pre><code>
+</code></pre>
       
     </div>
 
@@ -650,7 +652,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -804,7 +806,27 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -863,7 +885,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#组合继承同上"><span class="nav-number">1.</span> <span class="nav-text">组合继承同上</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-create实现继承"><span class="nav-number">2.</span> <span class="nav-text">Object.create实现继承</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#继承"><span class="nav-number">1.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组合继承同上"><span class="nav-number">2.</span> <span class="nav-text">组合继承同上</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-create实现继承"><span class="nav-number">3.</span> <span class="nav-text">Object.create实现继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Class-继承"><span class="nav-number">4.</span> <span class="nav-text">Class 继承</span></a></li></ol></div>
             
 
           </div>
