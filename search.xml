@@ -1,57 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>%2F%2Farticles%2F0.html</url>
-    <content type="text"><![CDATA[promise const state = { PENDING: 'pending', REJECTED: 'rejected', RESOLVED: 'resolved' } function myPromise(fn){ let self = this; self.value = undefined; self.state = state.PENDING; self.rejectedCallbacks = []; self.resolvedCallbacks = []; function reject(value){ if(self.state === state.PENDING){ self.value = value self.state = state.rejected self.rejectedCallbacks.map(cb=>cb(self.value)) } } function resolve(value){ if(self.state === state.PENDING){ self.value = value self.state = state.resolved self.resolvedCallbacks.map(cb=>cb(self.value)) } } try { fn(resolve, reject) } catch (error) { reject(error) } } myPromise.prototype.then = function(onFulfilled, onRejected){ const self = this; // 初始化 onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value=>value; onRejected = typeof onRejected === 'function' ? onRejected : error=>{ throw error }; if (self.state === state.PENDING) { self.rejectedCallbacks.push(onRejected); self.resolvedCallbacks.push(onFulfilled); } if (self.state === state.REJECTED){ onRejected(self.value) } if (self.state === state.RESOLVED){ onFulfilled(self.value) } }]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[use-strict]]></title>
     <url>%2F%2Farticles%2Fa700.html</url>
     <content type="text"><![CDATA[ES5 严格模式都做了哪些事？ 全局变量严格模式下禁止自动创建全局变量 来看下面的例子12a = 3;window.a // 3 123&apos;use strict&apos;a = 3;// ReferenceError a is not definedwindow.a //]]></content>
       <tags>
         <tag>严格模式</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F%2Farticles%2F0.html</url>
-    <content type="text"><![CDATA[实现⼀一个头部 header 高度固定宽度自适应，左下侧 sidebar 宽度固定、高度自适应。右下侧 content 自适应的布局。 *{ margin: 0; padding: 0; } .header{ height: 60px; background-color: red; } .aside{ position: absolute; width: 60px; bottom: 0; top: 60px; /* height: 100%; */ /* height: calc( 100vh - 60px ); */ background-color: greenyellow; } .content{ position: absolute; top: 60px; left: 60px; bottom: 0; right: 0; /* width: calc( 100vw - 60px ); */ /* height: calc( 100vh - 60px ); */ background-color: blue; }]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F%2Farticles%2F0.html</url>
-    <content type="text"><![CDATA[实现⼀一个头部 header 高度固定宽度自适应，左下侧 sidebar 宽度固定、高度自适应。右下侧 content 自适应的布局。 *{ margin: 0; padding: 0; } .header{ height: 60px; background-color: red; } .aside{ float: left; width: 60px; /* height: 100%; */ height: calc( 100vh - 60px ); background-color: greenyellow; } .content{ margin-left: 60px; /* width: calc( 100vw - 60px ); */ height: calc( 100vh - 60px ); background-color: blue; }]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F%2Farticles%2F0.html</url>
-    <content type="text"><![CDATA[*{ margin:0; padding:0; } .top { width: 100%; height: 40px; background: #000; color:#fff; position:absolute; top:0; /*以上设置是重点必须的*/ text-align:center; line-height:40px; } .bottom{ width:100%; height:40px; background:#000; color:#fff; position:absolute; bottom:0; /*以上设置是重点必须的*/ text-align:center; line-height:40px; } .mainBox{ width:100%; position:absolute; top:40px; bottom:40px; /*以上设置是重点必须的*/ } .mainBox .leftBox{ height:100%; width:200px; float:left; margin-bottom:40px; overflow: auto; /*以上设置是重点必须的*/ border:6px solid green; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; text-align:center; line-height:40px; } .mainBox .rightBox{ height:100%; margin-left:220px; /*以上设置是重点必须的*/ border:6px solid crimson; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; /* overflow: auto; */ text-align:center; line-height:40px; } 顶部，高度40px 左盒子，固定宽度200px，高度自适应铺满屏幕剩余高度 右盒子，距离左盒子20px，高度自适应宽度自适应铺满屏幕剩余高度 底部，高度40px]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F%2Farticles%2F0.html</url>
-    <content type="text"><![CDATA[Document const pieces = [ [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 2, 0, 0, 0], [0, 0, 0, 2, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0] ]; let blackandwhiteEle = document.getElementById('blackandwhite'); for ( let i=0; i]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F%2Farticles%2F0.html</url>
-    <content type="text"><![CDATA[Document * { font-size: 12px !important; } #test { font-size: 14px; } .test1 { font-size: 10px; } 123123]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F%2Farticles%2F0.html</url>
-    <content type="text"><![CDATA[Document 第一条 第二条 第三条 let testEl = document.querySelector('#test') // let testEl = document.getElementById('test') let liArray = document.getElementsByTagName('li'); // testEl.onclick = function(e){ // var liEl = e.target; // var i = Array.prototype.indexOf.call(liArray, liEl); // console.log(i) // } testEl.addEventListener('click', function(e){ var liEl = e.target; var i = Array.prototype.indexOf.call(liArray, liEl); console.log(i) })]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F%2Farticles%2F0.html</url>
-    <content type="text"><![CDATA[var i=0; function timedCount() { i=i+1; postMessage(i); setTimeout("timedCount()",500); } timedCount();]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F%2Farticles%2F0.html</url>
-    <content type="text"><![CDATA[web worker 使用 计数： 开始工作 停止工作 var w; function startWorker(){ // worker 是否支持 if (typeof(Worker) !== 'undefined') { if (typeof(w) === 'undefined'){ w = new Worker('./worker.js'); } w.onmessage = function(event){ console.log(event) document.getElementById("result").innerHTML = event.data; } } else { // 不支持 document.getElementById('result').innerHTML='抱歉，你的浏览器不支持 Web Workers...'; } } function stopWorker(){ w.terminate(); w = undefined; }]]></content>
   </entry>
   <entry>
     <title><![CDATA[scss and less]]></title>
@@ -250,6 +205,17 @@
     <content type="text"><![CDATA[怎么通过 svg 实现 wifi 图标根据信号动态展示还有动画效果呢？ 推荐参考未来必热：SVG Sprite技术介绍]]></content>
       <tags>
         <tag>svg</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[算法题目]]></title>
+    <url>%2F%2Farticles%2F36608.html</url>
+    <content type="text"><![CDATA[给定两个数组，写一个方法来计算它们的交集。 给定 nums1 = [1, 2, 2, 1]，nums2 = [2, 2]，返回 [2, 2]。12let intersection = (...arg) =&gt; arg[0].filter(v =&gt; arg[1].includes(v));// 但是[1,2,2,1] [2] 返回 [2,2] 这道题两种思路，空间换时间，或者不用额外空间就提升时间复杂度。 空间换时间的思路是用个 Hash 表来存数组1的元素以及出现的个数（此处需要遍历n次，并存一个n级别的空间）。遍历数组2，发现数组2里有 Hash 表里的值就存到Result数组里，并把 Hash 表内该值次数减一（为0之后就Delete）。如果不存在 Hash 表里，就跳过。这样时间复杂度就是 (m+n) 不用额外空间，就用遍历n的时候，判断值在不在m里，如果在，把m里的该值 push 到 Result 数组里，并将该值从m数组里删掉（用 splice ）。这样就是不用额外空间，但是提高了时间复杂度。 最终实现时间123456789101112131415161718const intersect = (nums1, nums2) =&gt; &#123; const map = &#123;&#125; const res = [] for (let n of nums1) &#123; if (map[n]) &#123; map[n]++ &#125; else &#123; map[n] = 1 &#125; &#125; for (let n of nums2) &#123; if (map[n] &gt; 0) &#123; res.push(n) map[n]-- &#125; &#125; return res&#125; 给定一个数组，去重可以新建数组12345678const arr = [1,2,3,4,5,1,2,3];const arr1 = [];for(let item of arr)&#123; // includes indexOf if(!arr1.includes(item))&#123; arr1.push(item); &#125;&#125; 不可新建数组最长重复的字符 可以有多个最长重复字符str = ‘abwwwcwwwwwwbwwwwccccc’; 输出 w 12345678910111213141516171819202122232425262728293031function myFn(str)&#123; const arr = str.split(&apos;&apos;); let tempObj = &#123;&#125;; let finObj = &#123;&#125;; for(let i=1; i&lt;arr.length; i++)&#123; if(arr[i]===arr[i-1])&#123;// 重复 if(!tempObj[arr[i]])&#123; // 不存在 tempObj[arr[i]] = 2 &#125;else&#123;// 存在 tempObj[arr[i]]++ &#125; &#125; else &#123; // 重复断裂 if(!finObj[arr[i-1]])&#123; // finObj[arr[i-1]] = 1 &#125; if(tempObj[arr[i-1]]&gt;finObj[arr[i-1]])&#123; //存在 finObj[arr[i-1]] = tempObj[arr[i-1]] &#125; tempObj[arr[i-1]] = 1 &#125; &#125; let max = 0; let maxKey = &apos;&apos;; for (let key in finObj) &#123; if (finObj[key] &gt; max) &#123; max = finObj[key] maxKey = key &#125; &#125; return maxKey&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>

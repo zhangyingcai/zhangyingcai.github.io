@@ -113,14 +113,14 @@
 
 
   <meta name="description" content="给定两个数组，写一个方法来计算它们的交集。">
-<meta name="keywords" content="JavaScript">
+<meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法题目">
 <meta property="og:url" content="https://zhangyingcai.github.io/articles/36608.html">
 <meta property="og:site_name" content="mumu的个人博客">
 <meta property="og:description" content="给定两个数组，写一个方法来计算它们的交集。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-24T09:21:43.133Z">
+<meta property="og:updated_time" content="2019-07-18T01:13:33.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法题目">
 <meta name="twitter:description" content="给定两个数组，写一个方法来计算它们的交集。">
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">46</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">56</span></a>
 
   </li>
         
@@ -299,7 +299,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">18</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">19</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">60</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">65</span></a>
 
   </li>
 
@@ -467,11 +467,29 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-24 17:21:43" itemprop="dateModified" datetime="2019-05-24T17:21:43+08:00">2019-05-24</time>
+                <time title="修改时间：2019-07-18 09:13:33" itemprop="dateModified" datetime="2019-07-18T09:13:33+08:00">2019-07-18</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -516,13 +534,15 @@
 <p>这道题两种思路，空间换时间，或者不用额外空间就提升时间复杂度。</p>
 </blockquote>
 <blockquote>
-<p>空间换时间的思路是用个Hash表来存数组1的元素以及出现的个数（此处需要遍历n次，并存一个n级别的空间）。<br>遍历数组2，发现数组2里有Hash表里的值就存到Result数组里，并把Hash表内该值次数减一（为0之后就Delete）。如果不存在Hash表里，就跳过。这样时间复杂度就是(m+n)</p>
+<p>空间换时间的思路是用个 Hash 表来存数组1的元素以及出现的个数（此处需要遍历n次，并存一个n级别的空间）。<br>遍历数组2，发现数组2里有 Hash 表里的值就存到Result数组里，并把 Hash 表内该值次数减一（为0之后就Delete）。如果不存在 Hash 表里，就跳过。这样时间复杂度就是 (m+n)</p>
 </blockquote>
 <blockquote>
-<p>不用额外空间，就用遍历n的时候，判断值在不在m里，如果在，把m里的该值push到Result数组里，并将该值从m数组里删掉（用splice）。这样就是不用额外空间，但是提高了时间复杂度。</p>
+<p>不用额外空间，就用遍历n的时候，判断值在不在m里，如果在，把m里的该值 push 到 Result 数组里，并将该值从m数组里删掉（用 splice ）。这样就是不用额外空间，但是提高了时间复杂度。</p>
 </blockquote>
 <p>最终实现<br>时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const intersect = (nums1, nums2) =&gt; &#123;</span><br><span class="line">  const map = &#123;&#125;</span><br><span class="line">  const res = []</span><br><span class="line">  for (let n of nums1) &#123;</span><br><span class="line">    if (map[n]) &#123;</span><br><span class="line">      map[n]++</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      map[n] = 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  for (let n of nums2) &#123;</span><br><span class="line">    if (map[n] &gt; 0) &#123;</span><br><span class="line">      res.push(n)</span><br><span class="line">      map[n]--</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<h1 id="给定一个数组，去重"><a href="#给定一个数组，去重" class="headerlink" title="给定一个数组，去重"></a>给定一个数组，去重</h1><h2 id="可以新建数组"><a href="#可以新建数组" class="headerlink" title="可以新建数组"></a>可以新建数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1,2,3,4,5,1,2,3];</span><br><span class="line">const arr1 = [];</span><br><span class="line">for(let item of arr)&#123;</span><br><span class="line">  // includes indexOf</span><br><span class="line">  if(!arr1.includes(item))&#123;</span><br><span class="line">    arr1.push(item);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="不可新建数组"><a href="#不可新建数组" class="headerlink" title="不可新建数组"></a>不可新建数组</h2><h1 id="最长重复的字符-可以有多个"><a href="#最长重复的字符-可以有多个" class="headerlink" title="最长重复的字符 可以有多个"></a>最长重复的字符 可以有多个</h1><h2 id="最长重复字符"><a href="#最长重复字符" class="headerlink" title="最长重复字符"></a>最长重复字符</h2><p>str = ‘abwwwcwwwwwwbwwwwccccc’; 输出 w</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">function myFn(str)&#123;</span><br><span class="line">  const arr = str.split(&apos;&apos;);</span><br><span class="line">  let tempObj = &#123;&#125;;</span><br><span class="line">  let finObj = &#123;&#125;;</span><br><span class="line">  for(let i=1; i&lt;arr.length; i++)&#123;</span><br><span class="line">    if(arr[i]===arr[i-1])&#123;// 重复</span><br><span class="line">      if(!tempObj[arr[i]])&#123; // 不存在</span><br><span class="line">        tempObj[arr[i]] = 2</span><br><span class="line">      &#125;else&#123;// 存在</span><br><span class="line">        tempObj[arr[i]]++</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123; // 重复断裂</span><br><span class="line">       if(!finObj[arr[i-1]])&#123; //</span><br><span class="line">         finObj[arr[i-1]] = 1</span><br><span class="line">       &#125;</span><br><span class="line">       if(tempObj[arr[i-1]]&gt;finObj[arr[i-1]])&#123; //存在</span><br><span class="line">        finObj[arr[i-1]] = tempObj[arr[i-1]]</span><br><span class="line">       &#125; </span><br><span class="line">       tempObj[arr[i-1]] = 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  let max = 0;</span><br><span class="line">  let maxKey = &apos;&apos;;</span><br><span class="line">  for (let key in finObj) &#123;</span><br><span class="line">    if (finObj[key] &gt; max) &#123;</span><br><span class="line">      max = finObj[key]</span><br><span class="line">      maxKey = key</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return maxKey</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -542,6 +562,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+        </div>
       
 
       
@@ -639,7 +665,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -688,7 +714,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -793,7 +821,27 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -852,7 +900,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#给定两个数组，写一个方法来计算它们的交集。"><span class="nav-number">1.</span> <span class="nav-text">给定两个数组，写一个方法来计算它们的交集。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#给定两个数组，写一个方法来计算它们的交集。"><span class="nav-number">1.</span> <span class="nav-text">给定两个数组，写一个方法来计算它们的交集。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#给定一个数组，去重"><span class="nav-number">2.</span> <span class="nav-text">给定一个数组，去重</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可以新建数组"><span class="nav-number">2.1.</span> <span class="nav-text">可以新建数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不可新建数组"><span class="nav-number">2.2.</span> <span class="nav-text">不可新建数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最长重复的字符-可以有多个"><span class="nav-number">3.</span> <span class="nav-text">最长重复的字符 可以有多个</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最长重复字符"><span class="nav-number">3.1.</span> <span class="nav-text">最长重复字符</span></a></li></ol></li></ol></div>
             
 
           </div>
